@@ -1,0 +1,30 @@
+{
+  "name": "blog-again",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "postcss:build": "postcss ./css-dev/style.css ---dir ./public --env production --map",
+    "postcss:watch": "postcss ./css-dev/style.css ---dir ./public --watch --map --verbose --env development"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.9",
+    "astro": "^4.5.5",
+    "typescript": "^5.4.2"
+  },
+  "devDependencies": {
+    "@csstools/postcss-global-data": "^2.1.1",
+    "@fullhuman/postcss-purgecss": "^5.0.0",
+    "cssnano": "^6.1.1",
+    "open-props": "^1.6.21",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
+    "postcss-custom-media": "^10.0.4",
+    "postcss-import": "^16.1.0",
+    "postcss-jit-props": "^1.0.14"
+  }
+}
