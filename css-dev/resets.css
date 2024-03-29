@@ -299,11 +299,13 @@ fieldset {
         display: none;
       }
 
+      
       table {
         border-collapse: collapse;
         font-family: Tahoma, Geneva, sans-serif;
         margin-bottom: 1.5rem;
     }
+
     table td {
         padding: 15px;
     }

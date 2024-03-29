@@ -22,6 +22,9 @@ devDependencies:
   '@fullhuman/postcss-purgecss':
     specifier: ^5.0.0
     version: 5.0.0(postcss@8.4.38)
+  '@types/postcss-import':
+    specifier: ^14.0.3
+    version: 14.0.3
   cssnano:
     specifier: ^6.1.1
     version: 6.1.1(postcss@8.4.38)
@@ -888,6 +891,12 @@ packages:
     dependencies:
       '@types/unist': 2.0.10
     dev: false
+
+  /@types/postcss-import@14.0.3:
+    resolution: {integrity: sha512-raZhRVTf6Vw5+QbmQ7LOHSDML71A5rj4+EqDzAbrZPfxfoGzFxMHRCq16VlddGIZpHELw0BG4G0YE2ANkdZiIQ==}
+    dependencies:
+      postcss: 8.4.38
+    dev: true
 
   /@types/unist@2.0.10:
     resolution: {integrity: sha512-IfYcSBWE3hLpBg8+X2SEa8LVkJdJEkT2Ese2aaLs3ptGdVtABxndrMaxuFlQ1qdFf9Q5rDvDpxI3WwgvKFAsQA==}
