@@ -1,0 +1,23 @@
+---
+import MainLayout from "$layouts/MainLayout.astro";
+const posts = [{ title: "roger" }, { title: "pence" }];
+console.log(posts);
+---
+
+<MainLayout title="rogerpence.com | Blog">
+  <div>
+    <h1>Blog stuff</h1>
+
+    <div>
+      <ul>
+        <li><a href="/blog/better-anchor-title">A better anchor title</a></li>
+      </ul>
+    </div>
+  </div>
+
+  {
+    posts.map((post) => {
+      <div>{post.title}</div>;
+    })
+  }
+</MainLayout>

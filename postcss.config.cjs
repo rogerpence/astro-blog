@@ -28,6 +28,7 @@ module.exports = {
               "./src/pages/**/*.html",
               "./src/pages/**/*.astro",
               "./src/pages/**/*.md",
+              "./src/pages/**/*.mdx",
             ],
             safelist: [/^:where/, /^:has/, /^:is/],
           }),

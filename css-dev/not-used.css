@@ -1,0 +1,105 @@
+:where(a:not([class])), .default-anchor {
+    color: var(--text-color);
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    text-underline-offset: .3rem;
+    text-decoration-style: solid;
+    text-decoration-color: var(--accent-color);
+    text-decoration-thickness: 1px;  
+}    
+
+:where(a:not([class]):hover), .default-anchor:hover {
+    text-decoration-thickness: 4px;
+    /* font-weight: 900; */
+} 
+
+:where(button.fake-anchor) {
+    color: var(--text-color);
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    text-underline-offset: .3rem;
+    text-decoration-style: solid;
+    text-decoration-color: var(--accent-color);
+    text-decoration-thickness: 1px;  
+
+    background-color: transparent;
+    border: none;
+    text-align: left; 
+    cursor: pointer;
+}
+
+:where(strong) {
+    font-weight: 600;
+}
+
+:where(pre) {
+    margin-bottom: 1rem;        
+    padding-inline: .7rem; 
+    padding-block: .7rem;
+    color: var(--source-code-color);
+    background-color: var(--source-code-bg-color);
+    border-radius: var(--small-radius);;
+}
+
+:where(code):not(pre>code) {
+     font-weight: 500;
+     font-style: italic;
+}
+
+
+:where(button.fake-anchor:hover) {
+    text-decoration-thickness: 4px;
+}
+
+:where(ul, ol) {
+    list-style: none;
+} 
+
+body {
+    font-family: system-ui, 'Atkinson Hyperlegible', sans-serif;
+    /* font-family: 'Open Sans', 'Atkinson Hyperlegible', sans-serif; */
+    background-color: var(--page-bg-color);
+    color: var(--text-color);
+}
+
+.wrapper {
+    max-width: var(--max-width); 
+    margin: 0 auto; 
+    padding: 2rem;
+}
+
+
+
+/* * {
+    outline: 1px solid #f00 !important;
+  } */
+
+  .base-button {
+    min-width: 100px;
+    color: var(--brand-color);
+    padding-inline: 1rem;
+    padding-block: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block; 
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    box-shadow:inset 1px 1px 1px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+    background: var(--accent-color);
+  }
+
+  .base-button:hover {
+    /* background-color:   color-mix(in srgb, var(--accent-color), white 15%);         */
+    background-color:   color-mix(in srgb, var(--accent-color), yellow 25%);        
+  }
+
+  .base-button:active {
+    top: 2px;
+  }
+
+  .display-none {
+    display: none;
+  }

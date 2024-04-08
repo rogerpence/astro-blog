@@ -1,7 +1,6 @@
 
 @import "./resets.css";
 @import "./utilities.css"; 
+@import "./home-page.css";
+@import "./open-prop-defs.css"
 
-h1 {
-    color: navy;
-}

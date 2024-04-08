@@ -57,7 +57,7 @@
 }
 
 [debug], [dbg] {
-    outline: 2px dashed rgb(3, 3, 77) !important;
+    outline: 4px dashed rgb(3, 3, 77) !important;
     z-index: var(--layer-important);
 }
 

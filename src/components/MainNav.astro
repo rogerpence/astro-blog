@@ -1,0 +1,11 @@
+---
+import { Icon } from "astro-icon/components";
+import { navData } from "../data/nav-data";
+---
+
+<nav aria-label="Primary">
+  <Icon name="rp" />
+  <div>
+    {navData.map((item) => <a href={item.url}>{item.text}</a>)}
+  </div>
+</nav>

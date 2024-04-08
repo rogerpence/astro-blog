@@ -1,0 +1,11 @@
+---
+import MainLayout from "./MainLayout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<MainLayout title="rogerpence.com | Blog Posts">
+  <div>
+    <header>{frontmatter.title}</header>
+    <slot />
+  </div>
+</MainLayout>

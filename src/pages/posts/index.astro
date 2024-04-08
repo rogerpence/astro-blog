@@ -1,0 +1,26 @@
+---
+import MainLayout from "$layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts");
+console.log(posts);
+
+// posts.map((post) => {
+//   console.log(post.data.title);
+// });
+const hellox = "hello";
+
+//const posts = [{ title: "roger" }, { title: "pence" }];
+//console.log(posts[0]);
+---
+
+<MainLayout title="rogerpence.com | Blog">
+  <div>
+    {
+      posts.map((post) => (
+        <div>
+          <a href=`/posts/${post.slug}`>{post.data.title}</a>
+        </div>
+      ))
+    }
+  </div>
+</MainLayout>

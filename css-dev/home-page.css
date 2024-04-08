@@ -1,0 +1,52 @@
+body {
+    background-color:var(--brand-color);
+    color: var(--text-color-light);
+}
+
+footer {
+    background-color: purple;
+    position: sticky;
+    bottom: 0; 
+    background-color: green;
+}
+
+.site
+ {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.site__header {
+    position: sticky;
+    top: 0; 
+    background-color: var(--header-bg-color);
+    display: flex;
+    gap: .5rem;
+
+}
+
+p + p  {
+    margin-top: 1rem;
+}
+
+
+a { 
+    color: inherit;
+}
+
+:where(a:not([class])), .default-anchor {
+    color: var(--text-color);
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    text-underline-offset: .3rem;
+    text-decoration-style: solid;
+    text-decoration-color: var(--accent-color);
+    text-decoration-thickness: 1px;  
+    transform: all 10s ease-in;
+}    
+
+:where(a:hover:not([class])), .default-anchor {
+    text-decoration-thickness: 3px;
+}
