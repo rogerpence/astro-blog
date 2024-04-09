@@ -50,3 +50,6 @@ a {
 :where(a:hover:not([class])), .default-anchor {
     text-decoration-thickness: 3px;
 }
+
+
+

@@ -1,3 +1,5 @@
+@layer base;
+
 :root {
     @custom-media --media-small       (width <= 768px); 
     @custom-media --media-medium      (width >  768px) and (width <= 1024px); 

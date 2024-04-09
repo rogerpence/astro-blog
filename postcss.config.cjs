@@ -25,10 +25,10 @@ module.exports = {
       ? [
           purgecss({
             content: [
-              "./src/pages/**/*.html",
-              "./src/pages/**/*.astro",
-              "./src/pages/**/*.md",
-              "./src/pages/**/*.mdx",
+              "./src/**/*.html",
+              "./src/**/*.astro",
+              "./src/**/*.md",
+              "./src/**/*.mdx",
             ],
             safelist: [/^:where/, /^:has/, /^:is/],
           }),

@@ -1,6 +1,10 @@
+@layer base, app;
 
 @import "./resets.css";
 @import "./utilities.css"; 
+@import "./open-prop-defs.css";
+@import "./table.css";
+@import "./h-tag.css";
+@import "./list-tag.css";
 @import "./home-page.css";
-@import "./open-prop-defs.css"
 

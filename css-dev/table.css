@@ -1,3 +1,5 @@
+@layer base;
+
 table {
     border-collapse: collapse;
     font-family: Tahoma, Geneva, sans-serif;

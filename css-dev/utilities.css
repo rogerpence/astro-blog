@@ -1,3 +1,5 @@
+@layer base;
+
 .mb-1 {
     margin-bottom: var(--size-3);
 }
