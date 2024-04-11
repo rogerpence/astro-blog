@@ -1,17 +1,17 @@
 body {
-    background-color:var(--brand-color);
-    color: var(--text-color-light);
+    background-color:var(--page-bg-color);
+    color: var(--accent-color);
 }
 
 footer {
     background-color: purple;
     position: sticky;
-    bottom: 0; 
-    background-color: green;
+    bottom: 0;  
+    background-color: var(--accent-color);  
 }
 
 .site
- {
+{
     min-height: 100dvh;
     display: grid;
     grid-template-rows: auto 1fr auto;
@@ -27,9 +27,22 @@ footer {
 
 }
 
-p + p  {
-    margin-top: 1rem;
+div.content {
+    margin-block: 3rem 1rem;
 }
+
+div.use-sidebar {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 1rem;
+    margin: 0 auto; 
+    max-width: 1080px;
+}
+
+
+
+
+
 
 
 a { 

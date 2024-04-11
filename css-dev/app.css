@@ -1,0 +1,107 @@
+@layer base;
+
+body {
+    font-size: 20px;
+}
+
+h1 {
+    font-size: var(--font-size-6);
+    margin-block-end: var(--size-6);
+}
+
+h2 {
+    font-size: var(--font-size-5);   
+    margin-block-end: var(--size-5);     
+}
+
+h3 {
+    font-size: var(--font-size-4);   
+    margin-block-end: var(--size-4);     
+}
+
+h4 {
+    font-size: var(--font-size-3);    
+    margin-block-end: var(--size-3);
+}
+
+h5 {
+    font-size: var(--font-size-2);
+    margin-block-end: var(--size-2);
+}
+
+/* 
+ | Select h tag if followed by ul or ol. 
+ */
+h2:has(+ul), 
+h2:has(+ol),
+h3:has(+ul), 
+h3:has(+ol),
+h4:has(+ul), 
+h4:has(+ol) 
+{
+    margin-top: 2rem;
+}
+ 
+
+/* 
+ | Select p tag if followed by ul or ol. 
+ */
+p:has(+ul), 
+p:has(+ol)
+{
+    margin-bottom: .5rem;
+}
+
+p + p  {
+    margin-top: 1rem;
+} 
+
+p {
+    margin-bottom: var(--size-4);
+    line-height: var(--font-lineheight-3);
+}
+
+/* 
+ | Select ul or ol.
+ */
+ ul, ol {
+    list-style-type: disc;
+    margin-left: 2rem; 
+    font-size: inherit;
+}
+
+/* 
+ | Select ur or ol tag if followed by p tag.
+ */
+ul:has(+p), ol:has(+p) {
+    margin-bottom: 1rem;
+}
+ 
+li {
+    line-height: var(--font-lineheight-3);    
+}
+
+pre {
+    font-family: monospace;
+    font-size: 1rem;
+    padding-inline: 1rem; 
+    padding-block: 1rem;
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+    /* --astro-code-color-background: black; */
+    /* background-color: var(--source-code-bg-color) !important;  */
+}
+
+
+.spaced-bullet-list {
+    & li {
+        margin-block-end: 1rem;
+    }
+
+}
+
+
+article > h1:first-child {
+    margin-block-end: 4rem;
+}
+

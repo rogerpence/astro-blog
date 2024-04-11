@@ -2,6 +2,8 @@ import { defineConfig } from "astro/config";
 import icon from "astro-icon";
 
 import mdx from "@astrojs/mdx";
+import syntaxTheme from "./shiki-night-owl.json";
+//import syntaxTheme from "./shiki-houston.json";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,7 +13,7 @@ export default defineConfig({
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
       // https://shiki.style/themes
-      theme: "github-light",
+      theme: "css-variables",
       // Alternatively, provide multiple themes
       // https://shiki.style/guide/dual-themes
       //   themes: {

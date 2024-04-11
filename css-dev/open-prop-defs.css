@@ -14,21 +14,20 @@
 
     --default:                 red;
 
-    --brand-color:             #0a2c4c;
-    
-    --accent-color:            #f7640f;
-    --primary-bg-color:        var(--default);
-    --secondary-bg-color:      var(--default);    
+    --brand-color:             oklch(63.28% 0.04 198.661);
+    --accent-color:            oklch(86.03% 0.02 51.120);
 
-    --page-bg-color:           #dedede;
-   
+    --primary-bg-color:        oklch(37.46% 0.01 229.103);
+    --secondary-bg-color:      oklch(50.76% 0.01 214.387);
+
+    --page-bg-color:           var(--primary-bg-color);
 
     --pre-bg-color:            color-mix(in srgb, var(--page-bg-color), black 10%);
     --code-bg-color:           color-mix(in srgb, var(--page-bg-color), black 5%);
     --header-bg-color:         #fff;
     --footer-bg-color:         #2b2b2b;
 
-    --source-code-bg-color:    whitesmoke;
+    --source-code-bg-color:    oklch(from var(--primary-bg-color) calc(l * .35) c h);
     --source-code-color:       black;
 
     --nav-bg-color:            var(--gray-3);        
@@ -67,5 +66,17 @@
 
     --paragraph-text-size: 1.125rem;
     --max-width: 90ch; 
+
+    --astro-code-color-text: azure;
+    --astro-code-color-background: color-mix(in srgb, var(--page-bg-color), black 60%);
+    --astro-code-token-constant: plum;
+    --astro-code-token-string: orchid;
+    --astro-code-token-comment: salmon;
+    --astro-code-token-keyword: powderblue;
+    --astro-code-token-parameter: seashell;
+    --astro-code-token-function: dodgerblue;
+    --astro-code-token-string-expression: burlywood;
+    --astro-code-token-punctuation: linen;
+    --astro-code-token-link: honeydew;    
 }
 
