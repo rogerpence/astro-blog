@@ -21,9 +21,7 @@ footer {
 .site__header {
     position: sticky;
     top: 0; 
-    background-color: var(--header-bg-color);
-    display: flex;
-    gap: .5rem;
+    background-color: var(--brand-color);
 
 }
 
@@ -38,12 +36,6 @@ div.use-sidebar {
     margin: 0 auto; 
     max-width: 1080px;
 }
-
-
-
-
-
-
 
 a { 
     color: inherit;

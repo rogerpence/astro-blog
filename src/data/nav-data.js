@@ -1,14 +1,15 @@
 export const navData = [
   {
-    text: "Crosby",
-    url: "/crosby",
+    text: "Posts",
+    url: "/posts",
+  },
+
+  {
+    text: "Links",
+    url: "/link",
   },
   {
-    text: "Stills",
-    url: "/stills",
-  },
-  {
-    text: "Nash",
-    url: "/nash",
+    text: "About",
+    url: "/about",
   },
 ];
