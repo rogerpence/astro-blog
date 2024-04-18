@@ -1,15 +1,18 @@
 ---
+// @ts-nocheck
 import MainLayout from "$layouts/MainLayout.astro";
-import PostCard from "$components/PostCard.astro";
+import PostListing from "$components/PostListing.astro";
+
+import { PAGE_SIZE } from "$scripts/globals.js";
+
+import { filterBlogPosts } from "$scripts/utils.js";
 
 export const getStaticPaths = async ({ paginate }) => {
-  const posts = await Astro.glob("../content/posts/*.mdx");
-  const filteredPosts = posts.filter(
-    (post) => !post.url.includes("_template.mdx")
-  );
+  const posts = await Astro.glob("../../content/posts/*.mdx");
+  const filteredPosts = filterBlogPosts(posts);
 
   return paginate(filteredPosts, {
-    pageSize: 3,
+    pageSize: PAGE_SIZE,
   });
 };
 
@@ -24,7 +27,7 @@ const { page } = Astro.props;
 
   <div class="blog-listing">
     <div>
-      {page.data.map((post) => <PostCard {post} />)}
+      {page.data.map((post) => <PostListing {post} />)}
     </div>
   </div>
 </MainLayout>

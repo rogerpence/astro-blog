@@ -1,7 +1,7 @@
 export const navData = [
   {
     text: "Posts",
-    url: "/posts",
+    url: "/posts/1",
   },
 
   {

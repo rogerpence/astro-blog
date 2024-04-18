@@ -2,13 +2,14 @@
 const { post } = Astro.props;
 import { slugify, slugifyFilename, formatDate } from "$scripts/utils.js";
 
-const { title, description, draft } = post.frontmatter;
+const { title, description, draft, date_published } = post.frontmatter;
 ---
 
 <div class="post-detail">
-  <a href={`${slugifyFilename(post.file)}`}>
+  <a href={`${slugifyFilename(post.file, "/posts/")}`}>
     {title}
     <div class="post-description">
+      {`${formatDate(date_published)}`}
       {description}
     </div>
   </a>
