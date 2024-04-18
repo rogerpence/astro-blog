@@ -6,7 +6,7 @@ export const navData = [
 
   {
     text: "Links",
-    url: "/link",
+    url: "/links",
   },
   {
     text: "About",

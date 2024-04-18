@@ -1,0 +1,37 @@
+---
+import MainLayout from "$layouts/MainLayout.astro";
+import PostCard from "$components/PostCard.astro";
+
+export const getStaticPaths = async ({ paginate }) => {
+  const posts = await Astro.glob("../content/posts/*.mdx");
+  const filteredPosts = posts.filter(
+    (post) => !post.url.includes("_template.mdx")
+  );
+
+  return paginate(filteredPosts, {
+    pageSize: 3,
+  });
+};
+
+const { page } = Astro.props;
+---
+
+<div>{page.currentPage}</div>
+
+<MainLayout title="rogerpence.com | Blog">
+  {page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
+  {page.url.next ? <a href={page.url.next}>Next</a> : null}
+
+  <div class="blog-listing">
+    <div>
+      {page.data.map((post) => <PostCard {post} />)}
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  div.blog-listing {
+    margin: 0 auto;
+    border: 1px solid blue;
+  }
+</style>

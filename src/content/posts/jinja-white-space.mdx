@@ -1,0 +1,40 @@
+---
+layout: $layouts/SingleBlogPost.astro
+title: Managing white space with Jinja3
+description: How to manage whitespace with the Jinja3 templating engine
+tags: ["python"]
+date_added: 2024-04-17T10:42:05
+date_updated: 2024-04-17T10:42:09
+date_published:
+draft: true
+---
+
+This provides a list without blanks lines between each element, but with no trailing commas:
+
+```sql
+{% for field in fields +%}
+[{{field.name}}] {{field.sqlservertype}} {{field.sqlservernull}}
+{% endfor %}
+```
+
+Adding `{% if not loop.last %},{% endif %}` adds a trailing comma to all but the last element but puts everything on line:
+
+```sql
+{% for field in fields %}
+[{{field.name}}] {{field.sqlservertype}} {{field.sqlservernull}}{% if not loop.last %},{% endif %}
+{% endfor %}
+```
+
+Wierd, huh?
+
+**The code that works:**
+
+Adding a plus sign in the `for` clause `{% for field in fields +%}` disables Jinja3’s “trim_blocks” and renders the list without blank lines where each line but the last has a trailing comma:
+
+```sql
+{% for field in fields +%}
+[{{field.name}}] {{field.sqlservertype}} {{field.sqlservernull}}{% if not loop.last %},{% endif %}
+{% endfor %}
+```
+
+Read about “trim_blocks” here: https://jinja.palletsprojects.com/en/3.0.x/templates/#whitespace-control

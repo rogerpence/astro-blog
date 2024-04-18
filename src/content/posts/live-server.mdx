@@ -1,0 +1,24 @@
+---
+layout: $layouts/SingleBlogPost.astro
+title: Using NPM Live Server
+description: Using NPM Live Server
+tags: ["npm"]
+date_published: 2023-04-16
+date_added: 2023-04-16
+date_updated: 2023-04-16
+draft: true
+---
+
+I've had a lot of trouble with the VS Code LiveServer plugin lately—it frequently just stops working. So, instead use the NPM live-server module.
+
+Install live-server globally
+
+```
+npm install live-server -g
+```
+
+Then run it from with a project folder like
+
+```
+live-server <folder name>
+```

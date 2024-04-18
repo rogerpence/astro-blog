@@ -9,6 +9,9 @@ import syntaxTheme from "./shiki-night-owl.json";
 export default defineConfig({
   compressHTML: false,
   integrations: [icon(), mdx()],
+  //   redirects: {
+  //     "/": "/posts",
+  //   },
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)

@@ -1,4 +1,9 @@
 header {
+    & a {
+        text-decoration: none;  
+        cursor: pointer;
+    }
+
     
     & div.nav-wrapper {
         height: 5vh;

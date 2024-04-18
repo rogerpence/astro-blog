@@ -1,0 +1,27 @@
+---
+const { post } = Astro.props;
+import { slugify, slugifyFilename, formatDate } from "$scripts/utils.js";
+
+const { title, description, draft } = post.frontmatter;
+---
+
+<div class="post-detail">
+  <a href={`${slugifyFilename(post.file)}`}>
+    {title}
+    <div class="post-description">
+      {description}
+    </div>
+  </a>
+</div>
+
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  div.post-description {
+    font-size: 0.9rem;
+    margin-inline-start: 1rem;
+    margin-block-end: 0.5rem;
+  }
+</style>

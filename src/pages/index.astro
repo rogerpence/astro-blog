@@ -1,7 +1,42 @@
 ---
+import type { GetStaticPaths } from "astro";
 import MainLayout from "$layouts/MainLayout.astro";
+import PostCard from "$components/PostCard.astro";
+
+//const posts = await getCollection("posts");
+
+//export async function getStaticPaths({ paginate }) {
+const posts = await Astro.glob("../content/posts/*.mdx");
+//   return paginate(posts, {
+const filteredPosts = posts.filter(
+  (post) => !post.url.includes("_template.mdx")
+);
+
+//const { page } = Astro.props;
+console.log(posts.length);
+
+// const PAGE_SIZE = 3
+
+// const startingPageNumber = Astro.url.searchParams.get('page')
+
+// console.log(Astro.url)
+// const pager = new Pager(posts, PAGE_SIZE);
+// //console.log(pager)
+
+// const pagedPosts = pager.getRowsForPage(startingPageNumber);
 ---
 
-<MainLayout title="rogerpence.com | Home">
-  <div>Hello with slot</div>
+<MainLayout title="rogerpence.com | Blog">
+  <div class="blog-listing">
+    <div>
+      {filteredPosts.map((post) => <PostCard {post} />)}
+    </div>
+  </div>
 </MainLayout>
+
+<style>
+  div.blog-listing {
+    margin: 0 auto;
+    border: 1px solid blue;
+  }
+</style>
