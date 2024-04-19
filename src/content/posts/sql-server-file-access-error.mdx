@@ -1,0 +1,20 @@
+---
+layout: $layouts/SingleBlogPost.astro
+title: How to resolve file access error when restoring SQL Server DB
+description: How to avoid the "access-defined" when attempting to restore a SQL Server DB from a *.bak file.
+tags: [sql-server]
+date_added: 2024-04-18T14:18:59
+date_updated: 2024-04-18T14:19:04
+date_published:
+draft: false
+---
+
+To resolve the “access denied” error when trying to restore SQL Server .BAK files:
+
+Open services, and find the
+
+```
+SQL SERVER(MSSQLSERVER)
+```
+
+and change its “log on as” account from NT Service/MSSQLSERVER to Local System

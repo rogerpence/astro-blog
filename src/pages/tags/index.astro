@@ -1,0 +1,37 @@
+---
+import MainLayout from "$layouts/MainLayout.astro";
+import PostListing from "$components/PostListing.astro";
+
+import { filterBlogPosts } from "$scripts/utils.js";
+import ContentLayout from "$layouts/ContentLayout.astro";
+
+import { getTagsCount } from "$scripts/utils.js";
+
+const posts = await Astro.glob("../../content/posts/*.mdx");
+const filteredPosts = filterBlogPosts(posts);
+
+// Get tag list with count.
+// result =
+// tags [
+//   { tag: 'sql-server', count: 1 },
+//   { tag: 'cs', count: 1 },
+//   { tag: 'astro', count: 2 },
+//   { tag: 'html', count: 1 },
+//   { tag: 'css', count: 1 }
+// ]
+
+const tags = getTagsCount(posts);
+console.log(tags);
+---
+
+<ContentLayout title="rogerpence.com | Blog">
+  <div>
+    {
+      tags.map((tag) => (
+        <div>
+          <a href={`/tags/${tag.tag}`}>{tag.tag}</a>
+        </div>
+      ))
+    }
+  </div>
+</ContentLayout>

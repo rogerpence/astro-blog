@@ -1,0 +1,26 @@
+---
+import "$styles/style.css";
+
+import Head from "$components/Head.astro";
+import Header from "$components/Header.astro";
+import Footer from "$components/Footer.astro";
+---
+
+<script>
+  // client code here.
+</script>
+
+<html lang="en">
+  <Head />
+  <body>
+    <div class="site">
+      <Header />
+      <main class="body-background">
+        <div class="use-sidebar content-section">
+          <slot />
+        </div>
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

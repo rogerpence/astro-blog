@@ -6,10 +6,14 @@ import PostListing from "$components/PostListing.astro";
 import { PAGE_SIZE } from "$scripts/globals.js";
 
 import { filterBlogPosts } from "$scripts/utils.js";
+import ContentLayout from "$layouts/ContentLayout.astro";
 
 export const getStaticPaths = async ({ paginate }) => {
   const posts = await Astro.glob("../../content/posts/*.mdx");
-  const filteredPosts = filterBlogPosts(posts);
+  const filteredPosts = filterBlogPosts(posts, {
+    filterOutDrafts: false,
+    filterOutFuturePosts: false,
+  });
 
   return paginate(filteredPosts, {
     pageSize: PAGE_SIZE,
@@ -21,16 +25,16 @@ const { page } = Astro.props;
 
 <div>{page.currentPage}</div>
 
-<MainLayout title="rogerpence.com | Blog">
-  {page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
-  {page.url.next ? <a href={page.url.next}>Next</a> : null}
-
+<ContentLayout title="rogerpence.com | Blog">
   <div class="blog-listing">
+    {page.data.map((post) => <PostListing {post} />)}
+
     <div>
-      {page.data.map((post) => <PostListing {post} />)}
+      {page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
+      {page.url.next ? <a href={page.url.next}>Next</a> : null}
     </div>
   </div>
-</MainLayout>
+</ContentLayout>
 
 <style>
   div.blog-listing {

@@ -3,24 +3,16 @@ import MainLayout from "$layouts/MainLayout.astro";
 import PostListing from "$components/PostListing.astro";
 
 import { filterBlogPosts } from "$scripts/utils.js";
+import ContentLayout from "$layouts/ContentLayout.astro";
 
 const posts = await Astro.glob("../content/posts/*.mdx");
-const filteredPosts = filterBlogPosts(posts);
+const filteredPosts = filterBlogPosts(posts, { limit: 1 });
 
 console.log(posts.length);
 ---
 
-<MainLayout title="rogerpence.com | Blog">
-  <div class="blog-listing">
-    <div>
-      {filteredPosts.map((post) => <PostListing {post} />)}
-    </div>
+<ContentLayout title="rogerpence.com | Blog">
+  <div>
+    {filteredPosts.map((post) => <PostListing {post} />)}
   </div>
-</MainLayout>
-
-<style>
-  div.blog-listing {
-    margin: 0 auto;
-    border: 1px solid blue;
-  }
-</style>
+</ContentLayout>

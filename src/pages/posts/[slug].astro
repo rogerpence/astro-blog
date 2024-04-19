@@ -5,6 +5,7 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection, getEntryBySlug } from "astro:content";
 
 import type { Props } from "$scripts/types.ts";
+import ContentLayout from "$layouts/ContentLayout.astro";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
@@ -19,6 +20,8 @@ export const getStaticPaths = async () => {
     };
   });
 
+  console.log("paths", paths);
+
   return paths;
 };
 
@@ -26,10 +29,12 @@ export const getStaticPaths = async () => {
 //   post: CollectionEntry<"posts">;
 // };
 
+//console.log("props", Astro.props);
+
 const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<MainLayout title="rogerpence.com | Home">
+<ContentLayout title="rogerpence.com | Home">
   <Content />
-</MainLayout>
+</ContentLayout>

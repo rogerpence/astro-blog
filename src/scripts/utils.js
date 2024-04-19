@@ -50,8 +50,8 @@ export function filterBlogPosts(
   if (sortByDate) {
     filteredPosts.sort(
       (a, b) =>
-        new Date(b.frontmatter.date_published) -
-        new Date(a.frontmatter.date_published)
+        new Date(a.frontmatter.date_published) -
+        new Date(b.frontmatter.date_published)
     );
   } else {
     filteredPosts.sort(() => Math.random() - 0.5);
@@ -62,4 +62,35 @@ export function filterBlogPosts(
     return filteredPosts.slice(0, limit);
   }
   return filteredPosts;
+}
+
+export function getTagsCount(posts) {
+  const tags = posts.reduce((acc, post) => {
+    const tags = post.frontmatter.tags;
+    acc.push(...tags);
+    return acc;
+  }, []);
+
+  const uniqueTags = Array.from(new Set([...tags]));
+  const tagsCount = uniqueTags.map((tag) => {
+    return { tag, count: 0 };
+  });
+
+  tags.forEach((tag) => {
+    tagsCount.forEach((t) => {
+      if (t.tag == tag) {
+        t.count++;
+      }
+    });
+  });
+
+  return tagsCount.sort((a, b) => {
+    if (a.tag.toLowerCase() < b.tag.toLowerCase()) {
+      return -1;
+    }
+    if (a.tag.toLowerCase() > b.tag.toLowerCase()) {
+      return 1;
+    }
+    return 0;
+  });
 }

@@ -10,17 +10,14 @@ date_published: 2023-04-16
 draft: false
 ---
 
-import Thumb from "../../components/Thumb.astro";
-
 ### Search a collection for a given set
 
 ```js
 const findBlogEntries = await getCollection("blog", ({ data }) => {
-  return data.title == "Toast notifcations for .NET 6+ Windows apps";
+  return data.title == "Toast notifications for .NET 6+ Windows apps";
 });
 ```
 
-<Thumb />
 ### Get last four more recent posts
 
 ```js
