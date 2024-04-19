@@ -1,0 +1,39 @@
+---
+layout: ../../layouts/SingleBlogPost.astro
+title: A better anchor title
+description: Display the title attribute of an anchor tag when the anchor is hovered.
+tags:
+  - html
+  - css
+date_published: 2023-05-10
+date_added: 2023-05-10
+date_updated: 2023-05-14
+pinned: false
+---
+
+This is some text
+
+asdfasdfasdf
+
+```css
+a {
+  position: relative;
+  display: inline-block;
+  margin-top: 1rem;
+}
+```
+
+Other words here
+
+```css
+a[data-title]:hover::after {
+  content: attr(data-title);
+  position: absolute;
+  background-color: black;
+  color: white;
+  top: -1.7rem;
+  left: -2rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 5px;
+}
+```

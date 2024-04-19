@@ -1,0 +1,102 @@
+---
+layout: $layouts/SingleBlogPost.astro
+title: Omitting the last comma in a series in a Jinja template
+description: Omitting the last comma in a series in a Jinja template
+tags:
+  - python
+date_added: 2024-04-17T11:46:23
+date_updated: 2024-04-17T11:46:29
+date_published:
+pinned: false
+---
+
+Jinja is a great Python template engine.This article explains how to omit the last comma in a series with Jinja.
+
+The desired result is shown below--this is an argument list for an SQL stored procedure. Note that the Id column needs a zero default value and there cannot be a comma after the last column.
+
+```
+@Id int = 0,
+@Name nvarchar(100),
+@PrefixWithThe bit,
+@Added datetime,
+@Updated datetime
+```
+
+In the Libretto SQL Server Json schema there is a columnSqlDeclarations column meta token that produces this:
+
+```
+@Id int,
+@Name nvarchar(100),
+@PrefixWithThe bit,
+@Added datetime,
+@Updated datetime,
+```
+
+That's close, but no cigar. It doesn't assign the zero to the Id column and the trailing comma breaks things.
+
+Assigning a zero to the Id is a special case, so (in my case) its worth a little manual work force the zero assignment (note also that the test for the id column is case insensitive--just in case):
+
+```
+{% for col in columns %}
+{% if col.ColumnName.lower() == 'id' %}
+@{{col.ColumnName}} {{col.DDLType}} = 0
+{% else %}
+@{{col.ColumnName}} {{col.DDLType}}
+{% endif %}
+{% endfor %}
+```
+
+That's close, but the trailing comma remains.
+
+```
+Id int = 0,
+@Name nvarchar(100),
+@PrefixWithThe bit,
+@Added datetime,
+@Updated datetime,
+```
+
+To get the desired result, the template needs omit the trailing comma on the last element in the series. This template:
+
+```
+{% for col in columns %}
+{% if col.ColumnName.lower() == 'id' %}
+@{{col.ColumnName}} {{col.DDLType}} = 0{% if not loop.last %},{% endif %}
+{% else %}
+@{{col.ColumnName}} {{col.DDLType}}{% if not loop.last %},{% endif %}
+{% endif %}
+{% endfor %}
+```
+
+produces the correct results:
+
+```
+@Id int = 0,
+@Name nvarchar(100),
+@PrefixWithThe bit,
+@Added datetime,
+@Updated datetime
+```
+
+The Jinja templating engine has a built-in variable that tracks a loop index. The loop.last value conditions when the template emits the comma.
+
+```
+{% if not loop.last %},{% endif %}
+
+```
+
+This article is too long!
+
+```
+{% for column in columns -%}
+    {% if column.PrimaryKey == 'True' %}
+        {% if not loop.first %}, {% endif %}{{column.ColumnName}} = keyValue{{loop.index}}
+    {% endif %}
+{%- endfor %}
+```
+
+See the [Jinja loop documentation](https://jinja.palletsprojects.com/en/3.0.x/templates/#list-of-control-structures) for more info.
+
+While it's not directly a part of this issue, knowing how Jinja [controls white space](https://jinja.palletsprojects.com/en/3.0.x/templates/#whitespace-control) is helpful.
+
+Also, don't miss this Jinja tricks page in the [Jinja docs](https://jinja.palletsprojects.com/en/3.1.x/).

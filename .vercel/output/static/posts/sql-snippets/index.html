@@ -9,7 +9,7 @@
   <meta name="generator" content="Astro v4.5.5">
 
   <title></title>
-<link rel="stylesheet" href="/_astro/index.s0_WeDA2.css" /><script type="module">
+<link rel="stylesheet" href="/_astro/index.CjZ6UvWe.css" /><script type="module">
 </script></head>
   <body>
     <div class="site">
@@ -36,35 +36,77 @@
   <div class="use-sidebar">
     <article class="column-main">
       <h1>SQL snippets</h1>
-      <h4 id="copy-all-rows-from-one-table-to-another">Copy all rows from one table to another</h4>
+      <div class="small-tags-list">
+  <span>sql</span>
+</div>
+      <h3 id="copy-all-rows-from-one-table-to-another">Copy all rows from one table to another</h3>
 <pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">insert into</span><span style="color:var(--astro-code-color-text)"> stateNew ([state], [abbrev])</span></span>
 <span class="line"><span style="color:var(--astro-code-token-keyword)">select</span><span style="color:var(--astro-code-token-keyword)"> *</span><span style="color:var(--astro-code-token-keyword)"> from</span><span style="color:var(--astro-code-color-text)"> States</span></span>
 <span class="line"></span></code></pre>
-<h4 id="getting-identity-column-from-last-row-added">Getting identity column from last row added</h4>
+<h3 id="getting-identity-column-from-last-row-added-with-a-stored-procedure">Getting identity column from last row added with a stored procedure</h3>
 <p>Stored procedure:</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>CREATE PROCEDURE [dbo].[qInsert]</span></span>
-<span class="line"><span>    @Id int,</span></span>
-<span class="line"><span>    @Name nvarchar(100)</span></span>
-<span class="line"><span>AS</span></span>
-<span class="line"><span>BEGIN</span></span>
-<span class="line"><span>    SET NOCOUNT ON</span></span>
-<span class="line"><span>    INSERT INTO [dbo].[artist]</span></span>
-<span class="line"><span>    (</span></span>
-<span class="line"><span>        [Name]</span></span>
-<span class="line"><span>    )</span></span>
-<span class="line"><span>    VALUES(</span></span>
-<span class="line"><span>        @Name</span></span>
-<span class="line"><span>    );</span></span>
-<span class="line"><span>    RETURN SCOPE_IDENTITY();</span></span>
-<span class="line"><span>END</span></span>
-<span class="line"><span>GO</span></span>
-<span class="line"><span></span></span></code></pre>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>EXEC @rp = qInsert 0, &#39;Bobby Fuller Four&#39;</span></span>
-<span class="line"><span>SELECT @rp as &#39;identify&#39;</span></span>
-<span class="line"><span></span></span></code></pre>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">CREATE</span><span style="color:var(--astro-code-token-keyword)"> PROCEDURE</span><span style="color:var(--astro-code-color-text)"> [dbo].[qInsert]</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    @Id </span><span style="color:var(--astro-code-token-keyword)">int</span><span style="color:var(--astro-code-color-text)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    @Name </span><span style="color:var(--astro-code-token-keyword)">nvarchar</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-constant)">100</span><span style="color:var(--astro-code-color-text)">)</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">AS</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">BEGIN</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    SET</span><span style="color:var(--astro-code-token-keyword)"> NOCOUNT</span><span style="color:var(--astro-code-token-keyword)"> ON</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    INSERT INTO</span><span style="color:var(--astro-code-color-text)"> [dbo].[artist]</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    (</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">        [Name]</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    )</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    VALUES</span><span style="color:var(--astro-code-color-text)">(</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">        @Name</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    );</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    RETURN</span><span style="color:var(--astro-code-token-function)"> SCOPE_IDENTITY</span><span style="color:var(--astro-code-color-text)">();</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">END</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">GO</span></span>
+<span class="line"></span></code></pre>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">EXEC</span><span style="color:var(--astro-code-color-text)"> @rp </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-color-text)"> qInsert </span><span style="color:var(--astro-code-token-constant)">0</span><span style="color:var(--astro-code-color-text)">, </span><span style="color:var(--astro-code-token-string-expression)">&#39;Bobby Fuller Four&#39;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">SELECT</span><span style="color:var(--astro-code-color-text)"> @rp </span><span style="color:var(--astro-code-token-keyword)">as</span><span style="color:var(--astro-code-token-string-expression)"> &#39;identify&#39;</span></span>
+<span class="line"></span></code></pre>
     </article>
     <aside>
-      <div>Sidebar is gonna go here.</div>
+      <div>
+        <div class="global-tags-list">
+  <a href="/tag/astro">
+        <span>
+          astro
+          <span class="tag-count-circle">4</span>
+        </span>
+      </a><a href="/tag/cs">
+        <span>
+          cs
+          <span class="tag-count-circle">2</span>
+        </span>
+      </a><a href="/tag/css">
+        <span>
+          css
+          <span class="tag-count-circle">3</span>
+        </span>
+      </a><a href="/tag/html">
+        <span>
+          html
+          <span class="tag-count-circle">1</span>
+        </span>
+      </a><a href="/tag/javascript">
+        <span>
+          javascript
+          <span class="tag-count-circle">1</span>
+        </span>
+      </a><a href="/tag/npm">
+        <span>
+          npm
+          <span class="tag-count-circle">1</span>
+        </span>
+      </a><a href="/tag/powershell">
+        <span>
+          powershell
+          <span class="tag-count-circle">1</span>
+        </span>
+      </a>
+</div>
+      </div>
     </aside>
   </div>
 </div>

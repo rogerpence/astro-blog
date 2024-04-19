@@ -1,0 +1,46 @@
+---
+layout: $layouts/SingleBlogPost.astro
+title: SQL snippets
+description: SQL snippets
+tags:
+  - sql
+date_added: 2024-04-17T11:36:09
+date_updated: 2024-04-17T11:36:13
+date_published:
+pinned: false
+---
+
+### Copy all rows from one table to another
+
+```sql
+insert into stateNew ([state], [abbrev])
+select * from States
+```
+
+### Getting identity column from last row added with a stored procedure
+
+Stored procedure:
+
+```sql
+CREATE PROCEDURE [dbo].[qInsert]
+    @Id int,
+    @Name nvarchar(100)
+AS
+BEGIN
+    SET NOCOUNT ON
+    INSERT INTO [dbo].[artist]
+    (
+        [Name]
+    )
+    VALUES(
+        @Name
+    );
+    RETURN SCOPE_IDENTITY();
+END
+GO
+```
+
+```sql
+EXEC @rp = qInsert 0, 'Bobby Fuller Four'
+SELECT @rp as 'identify'
+```

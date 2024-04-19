@@ -1,0 +1,124 @@
+---
+layout: $layouts/SingleBlogPost.astro
+title: "Astro.glob versus getCollection"
+description: Astro.glob provides two ways to collect document content. Pick one, don't mix 'n match.
+tags:
+  - astro
+date_added: 2024-04-19T13:05:04
+date_updated: 2024-04-19T13:05:06
+date_published: 2024-04-19T14:41:03
+pinned: false
+---
+
+Astro provides two ways to collect document content:
+
+1. `Astro.glob`
+2. getCollection from Astro:content
+
+Confoundingly, each represents content data differently.
+
+## Astro.glob
+
+The code below `Astro.glob` fetches the `posts` content collection. The argument passed to `Astro.glob` must a be string literal.
+
+```
+const posts = await Astro.glob("../content/posts/*.mdx");
+```
+
+The code above fetches `.mdx` files, but you could get both Markdown and mdx files with the `*.md?` file selector.
+
+`Astro.glob` returns this object as one of the elements of the content data:
+
+```js
+{
+  frontmatter: [Getter],
+  getHeadings: [Getter],
+  __usesAstroImage: [Getter],
+  url: [Getter],
+  file: [Getter],
+  Content: [Getter],
+  default: [Function: Content] {
+    moduleId: 'C:/Users/thumb/Documents/Projects/astro-4/blog-again/src/content/posts/_template.mdx',
+    [Symbol(mdx-component)]: true,
+    [Symbol(astro.needsHeadRendering)]: false
+  },
+  [Symbol(Symbol.toStringTag)]: 'Module'
+}
+```
+
+## getCollection
+
+The code below fetches a content collection with `getCollection.` It's a little more flexible than `Astro.glob` because
+it isn't location-specific, it fetches the content collection requested.
+
+```js
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts");
+```
+
+`getCollection` returns this as one of the elements of the content data:
+
+```js
+{
+  id: 'astro-notes.mdx',
+  slug: 'astro-notes',
+  body: '[body]',
+  collection: 'posts',
+  data: {
+    title: 'Astro notes',
+    description: 'Astro notes',
+    tags: [ 'astro' ],
+    date_published: 2023-04-16T00:00:00.000Z,
+    date_added: 2023-04-16T00:00:00.000Z,
+    date_updated: 2023-04-16T00:00:00.000Z,
+    draft: false
+  },
+  render: [AsyncFunction: render]
+}
+```
+
+##
+
+Because these two methods return distinct object structures, helpers like content filters and queries must be object-specific.
+Both are wrappers around Vite's `glob` function so their performance is similar.
+
+Although `getCollection` requires an import, I use it exclusively to fetch content collections. The helper function makes it easy
+to get all the data needed from the a content collection member to list it.
+
+```js
+export function getContentData(obj) {
+  return {
+    title: obj.data.title,
+    description: obj.data.description,
+    date_published: obj.data.date_published || "N/A",
+    slug: `/${obj.collection}/${obj.slug}`,
+  };
+}
+```
+
+My convention is that if `data_published` is `null`, then
+the document is a draft otherwise it's been published. If it
+is a draft document `getContentData` returns "N/A."
+
+The example below shows an Astro component that emits the HTML needed to the content collection member in a list.
+It receives a single post as a post as a property and then uses `getContentData` to get the values needed to list the document.
+
+```js
+---
+import { getContentData } from "$scripts/utils.js";
+
+const { post } = Astro.props;
+const { title, description, date_published, slug } = getContentData(post);
+---
+
+<div class="post-detail">
+  <a href={`${slug}`}>
+    {title}
+    <div class="post-description">
+      {date_published == "N/A" && <span class="draft-post-tag">Draft</span>}
+      {date_published != "N/A" && `${formatDate(date_published)}`}
+      {description}
+    </div>
+  </a>
+</div>
+```

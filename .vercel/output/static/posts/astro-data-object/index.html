@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width">
+  <meta name="generator" content="Astro v4.5.5">
+
+  <title></title>
+<link rel="stylesheet" href="/_astro/index.CjZ6UvWe.css" /><script type="module">
+</script></head>
+  <body>
+    <div class="site">
+      <header class="site__header">
+  <!-- <Icon name="rp" /> -->
+  <div class="nav-wrapper">
+    <div><a href="/">rogerpence.com</a></div>
+
+    <ul role="list">
+  <li>
+        <a href="/posts/1">Posts</a>
+      </li><li>
+        <a href="/links">Links</a>
+      </li><li>
+        <a href="/about">About</a>
+      </li>
+</ul>
+  </div>
+</header>
+      <main class="body-background">
+        <div class="use-sidebar content-section">
+          
+  <div class="content">
+  <div class="use-sidebar">
+    <article class="column-main">
+      <h1>Astro.glob versus getCollection</h1>
+      <div class="small-tags-list">
+  <span>astro</span>
+</div>
+      <p>Astro provides two ways to collect document content:</p>
+<ol>
+<li><code>Astro.glob</code></li>
+<li>getCollection from Astro:content</li>
+</ol>
+<p>Confoundingly, each represents content data differently.</p>
+<h2 id="astroglob">Astro.glob</h2>
+<p>The code below <code>Astro.glob</code> fetches the <code>posts</code> content collection. The argument passed to <code>Astro.glob</code> must a be string literal.</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>const posts = await Astro.glob(&quot;../content/posts/*.mdx&quot;);</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>The code above fetches <code>.mdx</code> files, but you could get both Markdown and mdx files with the <code>*.md?</code> file selector.</p>
+<p><code>Astro.glob</code> returns this object as one of the elements of the content data:</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-color-text)">{</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  frontmatter</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-color-text)"> [Getter]</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  getHeadings</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-color-text)"> [Getter]</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  __usesAstroImage</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-color-text)"> [Getter]</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  url</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-color-text)"> [Getter]</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  file</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-color-text)"> [Getter]</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  Content</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-color-text)"> [Getter]</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">  default</span><span style="color:var(--astro-code-color-text)">: [Function: Content] {</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    moduleId</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-string-expression)"> &#39;C:/Users/thumb/Documents/Projects/astro-4/blog-again/src/content/posts/_template.mdx&#39;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    [</span><span style="color:var(--astro-code-token-function)">Symbol</span><span style="color:var(--astro-code-color-text)">(mdx</span><span style="color:var(--astro-code-token-keyword)">-</span><span style="color:var(--astro-code-color-text)">component)]: </span><span style="color:var(--astro-code-token-constant)">true</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    [</span><span style="color:var(--astro-code-token-function)">Symbol</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-constant)">astro</span><span style="color:var(--astro-code-color-text)">.needsHeadRendering)]: </span><span style="color:var(--astro-code-token-constant)">false</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  }</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  [</span><span style="color:var(--astro-code-token-function)">Symbol</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-constant)">Symbol</span><span style="color:var(--astro-code-color-text)">.toStringTag)]: </span><span style="color:var(--astro-code-token-string-expression)">&#39;Module&#39;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="getcollection">getCollection</h2>
+<p>The code below fetches a content collection with <code>getCollection.</code> It’s a little more flexible than <code>Astro.glob</code> because
+it isn’t location-specific, it fetches the content collection requested.</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">import</span><span style="color:var(--astro-code-color-text)"> { getCollection } </span><span style="color:var(--astro-code-token-keyword)">from</span><span style="color:var(--astro-code-token-string-expression)"> &quot;astro:content&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-constant)"> posts</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-keyword)"> await</span><span style="color:var(--astro-code-token-function)"> getCollection</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;posts&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"></span></code></pre>
+<p><code>getCollection</code> returns this as one of the elements of the content data:</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-color-text)">{</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  id</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-string-expression)"> &#39;astro-notes.mdx&#39;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  slug</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-string-expression)"> &#39;astro-notes&#39;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  body</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-string-expression)"> &#39;[body]&#39;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  collection</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-string-expression)"> &#39;posts&#39;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  data</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    title</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-string-expression)"> &#39;Astro notes&#39;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    description</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-string-expression)"> &#39;Astro notes&#39;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    tags</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-color-text)"> [ </span><span style="color:var(--astro-code-token-string-expression)">&#39;astro&#39;</span><span style="color:var(--astro-code-color-text)"> ]</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    date_published</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-constant)"> 2023</span><span style="color:var(--astro-code-token-keyword)">-</span><span style="color:var(--astro-code-token-constant)">04</span><span style="color:var(--astro-code-token-keyword)">-</span><span style="color:var(--astro-code-color-text)">16T00</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-constant)">00</span><span style="color:var(--astro-code-color-text)">:</span><span style="color:var(--astro-code-token-constant)">00</span><span style="color:var(--astro-code-color-text)">.000</span><span style="color:var(--astro-code-token-constant)">Z</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    date_added</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-constant)"> 2023</span><span style="color:var(--astro-code-token-keyword)">-</span><span style="color:var(--astro-code-token-constant)">04</span><span style="color:var(--astro-code-token-keyword)">-</span><span style="color:var(--astro-code-color-text)">16T00</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-constant)">00</span><span style="color:var(--astro-code-color-text)">:</span><span style="color:var(--astro-code-token-constant)">00</span><span style="color:var(--astro-code-color-text)">.000</span><span style="color:var(--astro-code-token-constant)">Z</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    date_updated</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-constant)"> 2023</span><span style="color:var(--astro-code-token-keyword)">-</span><span style="color:var(--astro-code-token-constant)">04</span><span style="color:var(--astro-code-token-keyword)">-</span><span style="color:var(--astro-code-color-text)">16T00</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-constant)">00</span><span style="color:var(--astro-code-color-text)">:</span><span style="color:var(--astro-code-token-constant)">00</span><span style="color:var(--astro-code-color-text)">.000</span><span style="color:var(--astro-code-token-constant)">Z</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    draft</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-constant)"> false</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  }</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  render</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-color-text)"> [AsyncFunction: render]</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id=""></h2>
+<p>Because these two methods return distinct object structures, helpers like content filters and queries must be object-specific.
+Both are wrappers around Vite’s <code>glob</code> function so their performance is similar.</p>
+<p>Although <code>getCollection</code> requires an import, I use it exclusively to fetch content collections. The helper function makes it easy
+to get all the data needed from the a content collection member to list it.</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">export</span><span style="color:var(--astro-code-token-keyword)"> function</span><span style="color:var(--astro-code-token-function)"> getContentData</span><span style="color:var(--astro-code-color-text)">(obj) {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">  return</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    title</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> obj</span><span style="color:var(--astro-code-color-text)">.</span><span style="color:var(--astro-code-token-constant)">data</span><span style="color:var(--astro-code-color-text)">.title</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    description</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> obj</span><span style="color:var(--astro-code-color-text)">.</span><span style="color:var(--astro-code-token-constant)">data</span><span style="color:var(--astro-code-color-text)">.description</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    date_published</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> obj</span><span style="color:var(--astro-code-color-text)">.</span><span style="color:var(--astro-code-token-constant)">data</span><span style="color:var(--astro-code-color-text)">.date_published </span><span style="color:var(--astro-code-token-keyword)">||</span><span style="color:var(--astro-code-token-string-expression)"> &quot;N/A&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    slug</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-string-expression)"> `/</span><span style="color:var(--astro-code-token-keyword)">${</span><span style="color:var(--astro-code-token-constant)">obj</span><span style="color:var(--astro-code-color-text)">.collection</span><span style="color:var(--astro-code-token-keyword)">}</span><span style="color:var(--astro-code-token-string-expression)">/</span><span style="color:var(--astro-code-token-keyword)">${</span><span style="color:var(--astro-code-token-constant)">obj</span><span style="color:var(--astro-code-color-text)">.slug</span><span style="color:var(--astro-code-token-keyword)">}</span><span style="color:var(--astro-code-token-string-expression)">`</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  };</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">}</span></span>
+<span class="line"></span></code></pre>
+<p>My convention is that if <code>data_published</code> is <code>null</code>, then
+the document is a draft otherwise it’s been published. If it
+is a draft document <code>getContentData</code> returns “N/A.”</p>
+<p>The example below shows an Astro component that emits the HTML needed to the content collection member in a list.
+It receives a single post as a post as a property and then uses <code>getContentData</code> to get the values needed to list the document.</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">---</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">import</span><span style="color:var(--astro-code-color-text)"> { getContentData } </span><span style="color:var(--astro-code-token-keyword)">from</span><span style="color:var(--astro-code-token-string-expression)"> &quot;$scripts/utils.js&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-color-text)"> { </span><span style="color:var(--astro-code-token-constant)">post</span><span style="color:var(--astro-code-color-text)"> } </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-constant)"> Astro</span><span style="color:var(--astro-code-color-text)">.props;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-color-text)"> { </span><span style="color:var(--astro-code-token-constant)">title</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-token-constant)"> description</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-token-constant)"> date_published</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-token-constant)"> slug</span><span style="color:var(--astro-code-color-text)"> } </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-function)"> getContentData</span><span style="color:var(--astro-code-color-text)">(post);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">&lt;</span><span style="color:var(--astro-code-token-string-expression)">div</span><span style="color:var(--astro-code-token-function)"> class</span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-string-expression)">&quot;post-detail&quot;</span><span style="color:var(--astro-code-color-text)">&gt;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  &lt;</span><span style="color:var(--astro-code-token-string-expression)">a</span><span style="color:var(--astro-code-token-function)"> href</span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-color-text)">{</span><span style="color:var(--astro-code-token-string-expression)">`</span><span style="color:var(--astro-code-token-keyword)">${</span><span style="color:var(--astro-code-color-text)">slug</span><span style="color:var(--astro-code-token-keyword)">}</span><span style="color:var(--astro-code-token-string-expression)">`</span><span style="color:var(--astro-code-color-text)">}&gt;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    {title}</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    &lt;</span><span style="color:var(--astro-code-token-string-expression)">div</span><span style="color:var(--astro-code-token-function)"> class</span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-string-expression)">&quot;post-description&quot;</span><span style="color:var(--astro-code-color-text)">&gt;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">      {date_published </span><span style="color:var(--astro-code-token-keyword)">==</span><span style="color:var(--astro-code-token-string-expression)"> &quot;N/A&quot;</span><span style="color:var(--astro-code-token-keyword)"> &amp;&amp;</span><span style="color:var(--astro-code-color-text)"> &lt;</span><span style="color:var(--astro-code-token-string-expression)">span</span><span style="color:var(--astro-code-token-function)"> class</span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-string-expression)">&quot;draft-post-tag&quot;</span><span style="color:var(--astro-code-color-text)">&gt;Draft&lt;/</span><span style="color:var(--astro-code-token-string-expression)">span</span><span style="color:var(--astro-code-color-text)">&gt;}</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">      {date_published </span><span style="color:var(--astro-code-token-keyword)">!=</span><span style="color:var(--astro-code-token-string-expression)"> &quot;N/A&quot;</span><span style="color:var(--astro-code-token-keyword)"> &amp;&amp;</span><span style="color:var(--astro-code-token-string-expression)"> `</span><span style="color:var(--astro-code-token-keyword)">${</span><span style="color:var(--astro-code-token-function)">formatDate</span><span style="color:var(--astro-code-color-text)">(date_published)</span><span style="color:var(--astro-code-token-keyword)">}</span><span style="color:var(--astro-code-token-string-expression)">`</span><span style="color:var(--astro-code-color-text)">}</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">      {description}</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    &lt;/</span><span style="color:var(--astro-code-token-string-expression)">div</span><span style="color:var(--astro-code-color-text)">&gt;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  &lt;/</span><span style="color:var(--astro-code-token-string-expression)">a</span><span style="color:var(--astro-code-color-text)">&gt;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">&lt;/</span><span style="color:var(--astro-code-token-string-expression)">div</span><span style="color:var(--astro-code-color-text)">&gt;</span></span>
+<span class="line"></span></code></pre>
+    </article>
+    <aside>
+      <div>
+        <div class="global-tags-list">
+  <a href="/tag/astro">
+        <span>
+          astro
+          <span class="tag-count-circle">4</span>
+        </span>
+      </a><a href="/tag/cs">
+        <span>
+          cs
+          <span class="tag-count-circle">2</span>
+        </span>
+      </a><a href="/tag/css">
+        <span>
+          css
+          <span class="tag-count-circle">3</span>
+        </span>
+      </a><a href="/tag/html">
+        <span>
+          html
+          <span class="tag-count-circle">1</span>
+        </span>
+      </a><a href="/tag/javascript">
+        <span>
+          javascript
+          <span class="tag-count-circle">1</span>
+        </span>
+      </a><a href="/tag/npm">
+        <span>
+          npm
+          <span class="tag-count-circle">1</span>
+        </span>
+      </a><a href="/tag/powershell">
+        <span>
+          powershell
+          <span class="tag-count-circle">1</span>
+        </span>
+      </a>
+</div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+        </div>
+      </main>
+      <footer data-astro-cid-sz7xmlte>
+  Copyright &copy; 2024 by Roger Pence. All rights reserved.
+</footer>
+    </div>
+  </body></html>

@@ -1,46 +1,42 @@
 ---
 export const prerender = false;
 
-//import ContentLayout from "$layouts/ContentLayout.astro";
-import ContentLayout from "../../layouts/ContentLayout.astro";
+import PostListing from "$components/PostListing.astro";
+import ContentLayout from "$layouts/ContentLayout.astro";
 import { getCollection, getEntryBySlug } from "astro:content";
 
-// import { filterBlogPosts } from "$scripts/utils.js";
-
 const { tag } = Astro.params;
-//console.log("astro", Astro.url);
 
-// export async function getStaticPaths() {
-//   const posts = await getCollection("posts");
+const posts = await getCollection("posts");
 
-//   //   const flattenedPosts = posts.reduce((acc, post) => {
-//   //     if (post.data.tags.includes(tag)) {
-//   //       acc.push(post);
-//   //     }
-//   //     return acc;
-//   //   }, []);
+const filteredPosts = posts.filter((post) => {
+  return post.data.tags.includes(tag.trim());
+});
 
-//   //   flattenedPosts.forEach((post) => {
-//   //     console.log(post.data.title);
-//   //   });
+//Using getCollection, a post is structred like this:
+// {
+//   id: 'astro-notes.mdx',
+//   slug: 'astro-notes',
+//   body: 'entire post body here in markdown',
+//   collection: 'posts',
+//   data: {
+//     title: 'Astro notes',
+//     description: 'Astro notes',
+//     tags: [ 'astro' ],
+//     date_published: 2023-04-16T00:00:00.000Z,
+//     date_added: 2023-04-16T00:00:00.000Z,
+//     date_updated: 2023-04-16T00:00:00.000Z,
+//     draft: false
+//   },
+//   render: [AsyncFunction: render]
+// }
 
-//   //   const filteredPosts = posts.filter((post) =>
-//   //     post.data.tags.includes("astro")
-//   //   );
-
-//   return [
-//     { params: { tag: "astro", title: "bob1" } },
-//     { params: { tag: "successes", title: "bob2" } },
-//     { params: { tag: "community", title: "bob3" } },
-//     { params: { tag: "blogging", title: "bob4" } },
-//     { params: { tag: "setbacks", title: "bob5" } },
-//     { params: { tag: "learning in public", title: "bob6" } },
-//   ];
-
-//   //const { tag } = Astro.params;
-//}
+//console.log("tag", tag);
+// console.log(filteredPosts[0]);
 ---
 
 <ContentLayout title="rogerpence.com | Blog">
-  <div>{tag}</div>
+  <div>
+    {filteredPosts.map((post) => <PostListing {post} />)}
+  </div>
 </ContentLayout>
