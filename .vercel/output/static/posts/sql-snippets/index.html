@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width">
+  <meta name="generator" content="Astro v4.5.5">
+
+  <title></title>
+<link rel="stylesheet" href="/_astro/index.s0_WeDA2.css" /><script type="module">
+</script></head>
+  <body>
+    <div class="site">
+      <header class="site__header">
+  <!-- <Icon name="rp" /> -->
+  <div class="nav-wrapper">
+    <div><a href="/">rogerpence.com</a></div>
+
+    <ul role="list">
+  <li>
+        <a href="/posts/1">Posts</a>
+      </li><li>
+        <a href="/links">Links</a>
+      </li><li>
+        <a href="/about">About</a>
+      </li>
+</ul>
+  </div>
+</header>
+      <main class="body-background">
+        <div class="use-sidebar content-section">
+          
+  <div class="content">
+  <div class="use-sidebar">
+    <article class="column-main">
+      <h1>SQL snippets</h1>
+      <h4 id="copy-all-rows-from-one-table-to-another">Copy all rows from one table to another</h4>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">insert into</span><span style="color:var(--astro-code-color-text)"> stateNew ([state], [abbrev])</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">select</span><span style="color:var(--astro-code-token-keyword)"> *</span><span style="color:var(--astro-code-token-keyword)"> from</span><span style="color:var(--astro-code-color-text)"> States</span></span>
+<span class="line"></span></code></pre>
+<h4 id="getting-identity-column-from-last-row-added">Getting identity column from last row added</h4>
+<p>Stored procedure:</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>CREATE PROCEDURE [dbo].[qInsert]</span></span>
+<span class="line"><span>    @Id int,</span></span>
+<span class="line"><span>    @Name nvarchar(100)</span></span>
+<span class="line"><span>AS</span></span>
+<span class="line"><span>BEGIN</span></span>
+<span class="line"><span>    SET NOCOUNT ON</span></span>
+<span class="line"><span>    INSERT INTO [dbo].[artist]</span></span>
+<span class="line"><span>    (</span></span>
+<span class="line"><span>        [Name]</span></span>
+<span class="line"><span>    )</span></span>
+<span class="line"><span>    VALUES(</span></span>
+<span class="line"><span>        @Name</span></span>
+<span class="line"><span>    );</span></span>
+<span class="line"><span>    RETURN SCOPE_IDENTITY();</span></span>
+<span class="line"><span>END</span></span>
+<span class="line"><span>GO</span></span>
+<span class="line"><span></span></span></code></pre>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>EXEC @rp = qInsert 0, &#39;Bobby Fuller Four&#39;</span></span>
+<span class="line"><span>SELECT @rp as &#39;identify&#39;</span></span>
+<span class="line"><span></span></span></code></pre>
+    </article>
+    <aside>
+      <div>Sidebar is gonna go here.</div>
+    </aside>
+  </div>
+</div>
+
+        </div>
+      </main>
+      <footer data-astro-cid-sz7xmlte>
+  Copyright &copy; 2024 by Roger Pence. All rights reserved.
+</footer>
+    </div>
+  </body></html>

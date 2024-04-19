@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width">
+  <meta name="generator" content="Astro v4.5.5">
+
+  <title></title>
+<link rel="stylesheet" href="/_astro/index.s0_WeDA2.css" /><script type="module">
+</script></head>
+  <body>
+    <div class="site">
+      <header class="site__header">
+  <!-- <Icon name="rp" /> -->
+  <div class="nav-wrapper">
+    <div><a href="/">rogerpence.com</a></div>
+
+    <ul role="list">
+  <li>
+        <a href="/posts/1">Posts</a>
+      </li><li>
+        <a href="/links">Links</a>
+      </li><li>
+        <a href="/about">About</a>
+      </li>
+</ul>
+  </div>
+</header>
+      <main class="body-background">
+        <div class="use-sidebar content-section">
+          
+  <div class="content">
+  <div class="use-sidebar">
+    <article class="column-main">
+      <h1>Copy code in Astro to clipboard</h1>
+      <p>This JavaScript was intended specifically for use with ASTRO, but with minimal effort the code could probably be modified to work with any Markdown-generated HTML.</p>
+<h3 id="copy-asto-displayed-fenced-code-to-the-clipboard">Copy Asto-displayed fenced code to the clipboard</h3>
+<p>The JavaScript below adds a link in the code block to copy it to the clipboard, as shown below:</p>
+<p><img src="https://rogerpence.dev/collateral/copy-astro-code-to-clipboard.png" alt="collateral/copy-astro-code-to-clipboard.png"/></p>
+<p>Add the JavaScript below to your Astro project’s client-side JavaScript.</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-function)"> copyToClipboard</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-color-text)"> (str) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">  if</span><span style="color:var(--astro-code-color-text)"> (navigator </span><span style="color:var(--astro-code-token-keyword)">&amp;&amp;</span><span style="color:var(--astro-code-token-constant)"> navigator</span><span style="color:var(--astro-code-color-text)">.clipboard </span><span style="color:var(--astro-code-token-keyword)">&amp;&amp;</span><span style="color:var(--astro-code-token-constant)"> navigator</span><span style="color:var(--astro-code-color-text)">.</span><span style="color:var(--astro-code-token-constant)">clipboard</span><span style="color:var(--astro-code-color-text)">.writeText)</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    return</span><span style="color:var(--astro-code-token-constant)"> navigator</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">clipboard</span><span style="color:var(--astro-code-token-function)">.writeText</span><span style="color:var(--astro-code-color-text)">(str);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">  return</span><span style="color:var(--astro-code-token-constant)"> Promise</span><span style="color:var(--astro-code-token-function)">.reject</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;The Clipboard API is not available.&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-constant)"> preTags</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> document</span><span style="color:var(--astro-code-token-function)">.querySelectorAll</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;pre&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">let</span><span style="color:var(--astro-code-color-text)"> counter </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-constant)"> 1</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">preTags</span><span style="color:var(--astro-code-token-function)">.forEach</span><span style="color:var(--astro-code-color-text)">((tag) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">  const</span><span style="color:var(--astro-code-token-constant)"> codeId</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-string-expression)"> `id-</span><span style="color:var(--astro-code-token-keyword)">${</span><span style="color:var(--astro-code-color-text)">counter</span><span style="color:var(--astro-code-token-keyword)">++</span><span style="color:var(--astro-code-token-keyword)">}</span><span style="color:var(--astro-code-token-string-expression)">`</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  tag</span><span style="color:var(--astro-code-token-function)">.setAttribute</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;data-code-id&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-color-text)"> codeId);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">  const</span><span style="color:var(--astro-code-token-constant)"> insertCodeButton</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-string-expression)"> `</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">    &lt;small class=&quot;copy-code-label&quot;&gt;    </span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">        &lt;a data-code-id=&quot;</span><span style="color:var(--astro-code-token-keyword)">${</span><span style="color:var(--astro-code-color-text)">codeId</span><span style="color:var(--astro-code-token-keyword)">}</span><span style="color:var(--astro-code-token-string-expression)">&quot;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">           title=&quot;Ctrl/Click to copy with line numbers&quot; </span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">           class=&quot;copy-code-button&quot; href=#&gt;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">           &lt;i class=&quot;copy-icon fa-light fa-copy&quot;&gt;&lt;/i&gt; &lt;span class=&quot;copy-text&quot;&gt;copy&lt;/span&gt;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">        &lt;/a&gt;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">    &lt;/small&gt;`</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  tag</span><span style="color:var(--astro-code-token-function)">.insertAdjacentHTML</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;beforebegin&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-color-text)"> insertCodeButton);</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-constant)"> copyButtons</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> document</span><span style="color:var(--astro-code-token-function)">.querySelectorAll</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;.copy-code-button&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">copyButtons</span><span style="color:var(--astro-code-token-function)">.forEach</span><span style="color:var(--astro-code-color-text)">((button) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  button</span><span style="color:var(--astro-code-token-function)">.addEventListener</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;click&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-color-text)"> (e) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">    e</span><span style="color:var(--astro-code-token-function)">.preventDefault</span><span style="color:var(--astro-code-color-text)">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    const</span><span style="color:var(--astro-code-token-constant)"> codeId</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> e</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">currentTarget</span><span style="color:var(--astro-code-token-function)">.getAttribute</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;data-code-id&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    const</span><span style="color:var(--astro-code-token-constant)"> preTag</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> document</span><span style="color:var(--astro-code-token-function)">.querySelector</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">`pre[data-code-id=&quot;</span><span style="color:var(--astro-code-token-keyword)">${</span><span style="color:var(--astro-code-color-text)">codeId</span><span style="color:var(--astro-code-token-keyword)">}</span><span style="color:var(--astro-code-token-string-expression)">&quot;]`</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    const</span><span style="color:var(--astro-code-token-constant)"> codeTag</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> preTag</span><span style="color:var(--astro-code-color-text)">.firstChild;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    const</span><span style="color:var(--astro-code-token-constant)"> faIconEl</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> button</span><span style="color:var(--astro-code-token-function)">.querySelector</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;.copy-icon&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    const</span><span style="color:var(--astro-code-token-constant)"> textEl</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> e</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">currentTarget</span><span style="color:var(--astro-code-token-function)">.querySelector</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&#39;span[class=&quot;copy-text&quot;]&#39;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">    textEl</span><span style="color:var(--astro-code-color-text)">.innerText </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-string-expression)"> &quot;copied&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">    faIconEl</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">classList</span><span style="color:var(--astro-code-token-function)">.remove</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;fa-light&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-token-string-expression)"> &quot;fa-copy&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">    faIconEl</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">classList</span><span style="color:var(--astro-code-token-function)">.add</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;fa-solid&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-token-string-expression)"> &quot;fa-thumbs-up&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">    faIconEl</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">classList</span><span style="color:var(--astro-code-token-function)">.add</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;fade-in&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    let</span><span style="color:var(--astro-code-color-text)"> source;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    if</span><span style="color:var(--astro-code-color-text)"> (</span><span style="color:var(--astro-code-token-constant)">preTag</span><span style="color:var(--astro-code-token-function)">.hasAttribute</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;data-source&quot;</span><span style="color:var(--astro-code-color-text)">))</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">      source </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-constant)"> preTag</span><span style="color:var(--astro-code-token-function)">.getAttribute</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;data-source&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    else</span><span style="color:var(--astro-code-color-text)"> source </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-constant)"> codeTag</span><span style="color:var(--astro-code-color-text)">.innerText;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-function)">    copyToClipboard</span><span style="color:var(--astro-code-color-text)">(source);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-function)">    setTimeout</span><span style="color:var(--astro-code-color-text)">(() </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">      textEl</span><span style="color:var(--astro-code-color-text)">.innerText </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-string-expression)"> &quot;copy&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">      faIconEl</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">classList</span><span style="color:var(--astro-code-token-function)">.remove</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;fa-solid&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-token-string-expression)"> &quot;fa-thumbs-up&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">      faIconEl</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">classList</span><span style="color:var(--astro-code-token-function)">.add</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;fa-light&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-token-string-expression)"> &quot;fa-copy&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    }</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-token-constant)"> 1000</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  });</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">});</span></span>
+<span class="line"></span></code></pre>
+<p>Add these three CSS selectors to your Astro project’s global CSS:</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-function)">.copy-code-label</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  display</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> flex</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  justify-content</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> flex-end</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  margin-bottom</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> 5</span><span style="color:var(--astro-code-token-keyword)">px</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  position</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> relative</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">}</span></span>
+<span class="line"><span style="color:var(--astro-code-token-function)">.copy-code-label</span><span style="color:var(--astro-code-token-string-expression)"> a</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  color</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> gray</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  position</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> absolute</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  top</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> 16</span><span style="color:var(--astro-code-token-keyword)">px</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  right</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> 10</span><span style="color:var(--astro-code-token-keyword)">px</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  text-decoration</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> none</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-function)">.copy-code-label</span><span style="color:var(--astro-code-token-string-expression)"> a</span><span style="color:var(--astro-code-token-function)">:after</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  content</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-string-expression)"> &quot;&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  height</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> 1</span><span style="color:var(--astro-code-token-keyword)">px</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  background</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> gray</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  display</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> block</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">}</span></span>
+<span class="line"></span></code></pre>
+<blockquote>
+<p>This JavaScript uses FontAwesome icons.</p>
+</blockquote>
+<h4 id="show-line-numbers-in-asto-displayed-fenced-code">Show line numbers in Asto-displayed fenced code</h4>
+<p>Use the JavaScript to add line numbers to fenced code blocks in Astro. To assign line numbers to a fenced code block, add a <code>&lt;div class=&quot;number-code below&quot;&gt;&lt;/div&gt; just above the markdown fence, leaving one blank line between the </code>div` tag and the fence (as shown below).</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-color-text)">&lt;div class=&quot;number-code below&quot;&gt;&lt;/div</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-string)">```</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string)">    ... code to display here</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string)">```</span></span>
+<span class="line"></span></code></pre>
+<p>Add the Javascript <code>addLineNumbers</code> function to the Astro app’s client-side JavaScript.</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-function)"> addLineNumbers</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-color-text)"> () </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">  const</span><span style="color:var(--astro-code-token-constant)"> snippetInstances</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> document</span><span style="color:var(--astro-code-token-function)">.querySelectorAll</span><span style="color:var(--astro-code-color-text)">(</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">    &quot;div.number-code-below + small +  pre &gt; code&quot;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">  snippetInstances</span><span style="color:var(--astro-code-token-function)">.forEach</span><span style="color:var(--astro-code-color-text)">((snippetInstance) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-comment)">    //console.log(snippetInstance.parentElement.innerText)</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">    snippetInstance</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">parentElement</span><span style="color:var(--astro-code-token-function)">.setAttribute</span><span style="color:var(--astro-code-color-text)">(</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">      &quot;data-source&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">      snippetInstance</span><span style="color:var(--astro-code-color-text)">.</span><span style="color:var(--astro-code-token-constant)">parentElement</span><span style="color:var(--astro-code-color-text)">.innerText</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    const</span><span style="color:var(--astro-code-token-constant)"> lines</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> snippetInstance</span><span style="color:var(--astro-code-token-function)">.querySelectorAll</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;span.line&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    let</span><span style="color:var(--astro-code-color-text)"> leadingSpacesCount </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-constant)"> 2</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    if</span><span style="color:var(--astro-code-color-text)"> (</span><span style="color:var(--astro-code-token-constant)">lines</span><span style="color:var(--astro-code-color-text)">.</span><span style="color:var(--astro-code-token-constant)">length</span><span style="color:var(--astro-code-token-keyword)"> &gt;</span><span style="color:var(--astro-code-token-constant)"> 99</span><span style="color:var(--astro-code-color-text)">) leadingSpacesCount </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-constant)"> 3</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    if</span><span style="color:var(--astro-code-color-text)"> (</span><span style="color:var(--astro-code-token-constant)">lines</span><span style="color:var(--astro-code-color-text)">.</span><span style="color:var(--astro-code-token-constant)">length</span><span style="color:var(--astro-code-token-keyword)"> &lt;</span><span style="color:var(--astro-code-token-constant)"> 10</span><span style="color:var(--astro-code-color-text)">) leadingSpacesCount </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-constant)"> 1</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    let</span><span style="color:var(--astro-code-color-text)"> counter </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-constant)"> 1</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">    lines</span><span style="color:var(--astro-code-token-function)">.forEach</span><span style="color:var(--astro-code-color-text)">((line) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">      const</span><span style="color:var(--astro-code-token-constant)"> lineNo</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> counter</span><span style="color:var(--astro-code-token-function)">.toString</span><span style="color:var(--astro-code-color-text)">()</span><span style="color:var(--astro-code-token-function)">.padStart</span><span style="color:var(--astro-code-color-text)">(leadingSpacesCount</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-token-string-expression)"> &quot; &quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">      line</span><span style="color:var(--astro-code-token-function)">.insertAdjacentHTML</span><span style="color:var(--astro-code-color-text)">(</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">        &quot;afterbegin&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">        `&lt;span style=&quot;color: lightskyblue; border-right: 1px lightskyblue solid;padding-right: .2rem;margin-right: .5rem; &quot;&gt;</span><span style="color:var(--astro-code-token-keyword)">${</span><span style="color:var(--astro-code-color-text)">lineNo</span><span style="color:var(--astro-code-token-keyword)">}</span><span style="color:var(--astro-code-token-string-expression)">&lt;/span&gt;`</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">      );</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">      counter</span><span style="color:var(--astro-code-token-keyword)">++</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    });</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  });</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">};</span></span>
+<span class="line"></span></code></pre>
+<p>Call the addLineNumbers() function after the page loads.</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-function)">addLineNumbers</span><span style="color:var(--astro-code-color-text)">();</span></span>
+<span class="line"></span></code></pre>
+    </article>
+    <aside>
+      <div>Sidebar is gonna go here.</div>
+    </aside>
+  </div>
+</div>
+
+        </div>
+      </main>
+      <footer data-astro-cid-sz7xmlte>
+  Copyright &copy; 2024 by Roger Pence. All rights reserved.
+</footer>
+    </div>
+  </body></html>
