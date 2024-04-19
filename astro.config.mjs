@@ -1,9 +1,10 @@
 import { defineConfig } from "astro/config";
 import icon from "astro-icon";
-
 import mdx from "@astrojs/mdx";
 import syntaxTheme from "./shiki-night-owl.json";
 //import syntaxTheme from "./shiki-houston.json";
+
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
@@ -34,4 +35,6 @@ export default defineConfig({
       transformers: [],
     },
   },
+  output: "hybrid",
+  adapter: vercel(),
 });
