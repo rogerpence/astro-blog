@@ -7,19 +7,19 @@ tags:
 date_added: 2024-04-17T11:32:46
 date_updated: 2024-04-17T11:32:49
 date_published:
-draft: true
+pinned: false
 ---
 
 The `exists_with_value` filer returns true if the token provided exists and is not empty.
 
-```
+```python
 def exists_with_value(token):
     return token is not None and len(token) > 0
 ```
 
 The last line below adds the function to Jinja
 
-```
+```python
 def load_template(template_file):
     full_template_path = os.path.join(DATA_PATH, TEMPLATES_PATH, template_file)
     if not os.path.exists(full_template_path):

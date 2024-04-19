@@ -1,24 +1,42 @@
 ---
 export const prerender = false;
 
+import PostListing from "$components/PostListing.astro";
 import ContentLayout from "$layouts/ContentLayout.astro";
 import { getCollection, getEntryBySlug } from "astro:content";
 
 const { tag } = Astro.params;
 
 const posts = await getCollection("posts");
-console.log(posts[0].data.tags);
 
 const filteredPosts = posts.filter((post) => {
   return post.data.tags.includes(tag.trim());
 });
 
+//Using getCollection, a post is structred like this:
+// {
+//   id: 'astro-notes.mdx',
+//   slug: 'astro-notes',
+//   body: 'entire post body here in markdown',
+//   collection: 'posts',
+//   data: {
+//     title: 'Astro notes',
+//     description: 'Astro notes',
+//     tags: [ 'astro' ],
+//     date_published: 2023-04-16T00:00:00.000Z,
+//     date_added: 2023-04-16T00:00:00.000Z,
+//     date_updated: 2023-04-16T00:00:00.000Z,
+//     draft: false
+//   },
+//   render: [AsyncFunction: render]
+// }
+
 //console.log("tag", tag);
-console.log(filteredPosts);
+// console.log(filteredPosts[0]);
 ---
 
 <ContentLayout title="rogerpence.com | Blog">
   <div>
-    {filteredPosts.map((post) => <div>{post.data.title}</div>)}
+    {filteredPosts.map((post) => <PostListing {post} />)}
   </div>
 </ContentLayout>

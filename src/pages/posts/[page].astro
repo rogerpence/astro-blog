@@ -1,6 +1,5 @@
 ---
 // @ts-nocheck
-import MainLayout from "$layouts/MainLayout.astro";
 import PostListing from "$components/PostListing.astro";
 
 import { PAGE_SIZE } from "$scripts/globals.js";
@@ -8,8 +7,13 @@ import { PAGE_SIZE } from "$scripts/globals.js";
 import { filterBlogPosts } from "$scripts/utils.js";
 import ContentLayout from "$layouts/ContentLayout.astro";
 
+import { getCollection, getEntryBySlug } from "astro:content";
+
+import { filterBlogPosts } from "$scripts/utils.js";
+import ContentLayout from "$layouts/ContentLayout.astro";
+
 export const getStaticPaths = async ({ paginate }) => {
-  const posts = await Astro.glob("../../content/posts/*.mdx");
+  const posts = await getCollection("posts");
   const filteredPosts = filterBlogPosts(posts, {
     filterOutDrafts: false,
     filterOutFuturePosts: false,
@@ -27,7 +31,7 @@ const { page } = Astro.props;
 
 <ContentLayout title="rogerpence.com | Blog">
   <div class="blog-listing">
-    {page.data.map((post) => <PostListing {post} />)}
+    {page.data.map((post) => <PostListing {post} collection_name="posts" />)}
 
     <div>
       {page.url.prev ? <a href={page.url.prev}>Previous</a> : null}

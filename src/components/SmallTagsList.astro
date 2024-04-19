@@ -1,0 +1,7 @@
+---
+const { tags, css_classes = "small-tags-list" } = Astro.props;
+---
+
+<div class={css_classes}>
+  {tags.map((tag) => <span>{tag}</span>)}
+</div>

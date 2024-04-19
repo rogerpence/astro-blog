@@ -1,0 +1,47 @@
+div.small-tags-list {
+    display:flex;
+    gap: .5rem;
+    margin-bottom: 1rem;
+
+    & span {
+        font-size: .9rem;
+        background-color: var(--accent-color);
+        padding-inline: .5rem;
+        padding-block: .1rem;
+        border-radius: .5rem;
+
+    }
+}
+
+div.global-tags-list {
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: .5rem;
+    margin-bottom: 1rem;
+
+    & span {
+        font-size: .9rem;
+        background-color: var(--accent-color);
+        padding-inline: .5rem;
+        padding-block: .2rem;
+        border-radius: .5rem;
+        display: inline-block;
+    }
+
+    & .tag-count-circle {
+        font-size: .8rem;
+        background-color: orange;
+        border-radius: 50%;
+        color: #000;
+        height: 1.5em;
+        min-width: 1.5em;
+        padding: 1px; 
+        text-align: center;
+        width: 1.5em;
+    }
+    
+}
+
+
+

@@ -5,10 +5,14 @@ import PostListing from "$components/PostListing.astro";
 import { filterBlogPosts } from "$scripts/utils.js";
 import ContentLayout from "$layouts/ContentLayout.astro";
 
-import { getTagsCount } from "$scripts/utils.js";
+import { getAstroDataFromGlobObj, getTagsFromPosts } from "$scripts/utils.js";
 
-const posts = await Astro.glob("../../content/posts/*.mdx");
+import { getCollection, getEntryBySlug } from "astro:content";
+
+const posts = await getCollection("posts");
 const filteredPosts = filterBlogPosts(posts);
+
+//console.log(posts[0].data);
 
 // Get tag list with count.
 // result =
@@ -20,7 +24,7 @@ const filteredPosts = filterBlogPosts(posts);
 //   { tag: 'css', count: 1 }
 // ]
 
-const tags = getTagsCount(posts);
+const tags = getTagsFromPosts(posts);
 console.log(tags);
 ---
 

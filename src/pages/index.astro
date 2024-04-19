@@ -2,13 +2,23 @@
 import MainLayout from "$layouts/MainLayout.astro";
 import PostListing from "$components/PostListing.astro";
 
+import { getCollection, getEntryBySlug } from "astro:content";
+
 import { filterBlogPosts } from "$scripts/utils.js";
 import ContentLayout from "$layouts/ContentLayout.astro";
 
-const posts = await Astro.glob("../content/posts/*.mdx");
-const filteredPosts = filterBlogPosts(posts, { limit: 1 });
+// //const posts = await Astro.glob("../content/posts/*.mdx");
+const posts = await getCollection("posts");
 
-console.log(posts.length);
+const options = {
+  filterOutDrafts: false,
+  filterOutFuturePosts: false,
+  sortByDate: true,
+};
+
+const filteredPosts = filterBlogPosts(posts, options);
+
+console.log(posts);
 ---
 
 <ContentLayout title="rogerpence.com | Blog">

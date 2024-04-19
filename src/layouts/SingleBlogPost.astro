@@ -1,16 +1,28 @@
 ---
 import MainLayout from "./MainLayout.astro";
 const { frontmatter } = Astro.props;
+import { filterBlogPosts, getTagsFromPosts } from "$scripts/utils.js";
+import SmallTagsList from "$components/SmallTagsList.astro";
+import GlobalTagsList from "$components/GlobalTagsList.astro";
+
+import { getCollection, getEntryBySlug } from "astro:content";
+
+const posts = await getCollection("posts");
+const filteredPosts = filterBlogPosts(posts);
+const tags = getTagsFromPosts(filteredPosts);
 ---
 
 <div class="content">
   <div class="use-sidebar">
     <article class="column-main">
       <h1>{frontmatter.title}</h1>
+      <SmallTagsList tags={frontmatter.tags} />
       <slot />
     </article>
     <aside>
-      <div>Sidebar is gonna go here.</div>
+      <div>
+        <GlobalTagsList tags={tags} />
+      </div>
     </aside>
   </div>
 </div>

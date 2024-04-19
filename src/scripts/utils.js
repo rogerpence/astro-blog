@@ -11,7 +11,15 @@ export function slugify(text) {
     .replace(/-+$/, "");
 }
 
-export function slugifyFilename(filename, prefix = "/") {
+export function getAstroDataFromGlobObj(obj) {
+  return {
+    id: path.basename(obj.file),
+    slug: slugifyFilename(obj.file),
+    data: obj.frontmatter,
+  };
+}
+
+export function slugifyFilename(filename, prefix = "") {
   const url = path.basename(filename);
   return `${prefix}${url.replace(/\.[^.]+$/, "")}`;
 }
@@ -30,11 +38,11 @@ export function filterBlogPosts(
   } = {}
 ) {
   const filteredPosts = posts.reduce((acc, post) => {
-    if (post.url.includes("_template.mdx")) return acc;
+    if (post.url && post.url.includes("_template.mdx")) return acc;
 
-    const { date_published, draft } = post.frontmatter;
+    const { date_published } = post.data;
     // filterOutDrafts if true
-    if (filterOutDrafts && draft) return acc;
+    if (filterOutDrafts && !date_published) return acc;
 
     // filterOutFuturePosts if true
     if (filterOutFuturePosts && new Date(date_published) > new Date())
@@ -50,8 +58,7 @@ export function filterBlogPosts(
   if (sortByDate) {
     filteredPosts.sort(
       (a, b) =>
-        new Date(a.frontmatter.date_published) -
-        new Date(b.frontmatter.date_published)
+        new Date(a.data.date_published) - new Date(b.data.date_published)
     );
   } else {
     filteredPosts.sort(() => Math.random() - 0.5);
@@ -61,12 +68,22 @@ export function filterBlogPosts(
   if (typeof limit === "number") {
     return filteredPosts.slice(0, limit);
   }
+
   return filteredPosts;
 }
 
-export function getTagsCount(posts) {
+export function getContentData(obj) {
+  return {
+    title: obj.data.title,
+    description: obj.data.description,
+    date_published: obj.data.date_published || "N/A",
+    slug: `/${obj.collection}/${obj.slug}`,
+  };
+}
+
+export function getTagsFromPosts(posts) {
   const tags = posts.reduce((acc, post) => {
-    const tags = post.frontmatter.tags;
+    const tags = post.data.tags;
     acc.push(...tags);
     return acc;
   }, []);

@@ -8,7 +8,7 @@ const postsCollection = defineCollection({
         date_published: z.date().nullable(),
         date_added: z.date(),
         date_updated: z.date(),
-        draft: z.boolean()
+        pinned: z.boolean()
     })
 })
 

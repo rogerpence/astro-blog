@@ -1,0 +1,16 @@
+---
+const { tags, css_classes = "global-tags-list" } = Astro.props;
+---
+
+<div class={css_classes}>
+  {
+    tags.map((tag) => (
+      <a href={`/tag/${tag.tag}`}>
+        <span>
+          {tag.tag}
+          <span class="tag-count-circle">{tag.count}</span>
+        </span>
+      </a>
+    ))
+  }
+</div>

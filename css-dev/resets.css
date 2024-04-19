@@ -89,6 +89,10 @@ fieldset {
     border: none;
 }
 
+code:not([class='astro-code']) {
+    font-family: monospace;
+}
+
 /* :where(p) {
     text-wrap: balance;
 } */

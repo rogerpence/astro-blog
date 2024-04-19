@@ -36,9 +36,14 @@ div.use-sidebar {
     margin: 0 auto; 
     max-width: 1080px;
     background-color: whitesmoke;
+
+    & aside {
+        padding-inline-start: 1rem;
+    }
 }
 
 div.content-section {
+    display: flex;
     padding-inline: 3rem;
     padding-block: 3rem;
     background-color: whitesmoke;

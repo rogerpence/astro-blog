@@ -1,0 +1,17 @@
+a {
+    text-decoration: none;
+}
+
+div.post-description {
+    font-size: 0.9rem;
+    margin-inline-start: 1rem;
+    margin-block-end: 0.5rem;
+}
+
+span.draft-post-tag {
+    background-color: var(--danger-bg-color);
+    color: white;
+    padding-inline:  .4rem;
+    padding-block: .1rem;
+    border-radius: .2rem;
+}
