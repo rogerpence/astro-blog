@@ -15,24 +15,32 @@ button.pagefind-ui__search-clear {
     color: rgb(76, 73, 73) !important;
 }
 
+.pagefind-search-wrapper {
+    position: relative;
+} 
+
+
 .pagefind-ui__drawer {
     --pagefind-ui-scale: .8;
+    --search-results-max-width: 800px; 
 
     position: absolute;
-    width: 800px;
-
+    width: var(--search-results-max-width); 
     
     top: 2.5rem;
     left: 50%;    
-    margin-left: -400px; 
-    
-   
 
+    margin-left: calc((var(--search-results-max-width) / 2) * -1); 
+   
     background-color: white;
     border: lightgray 1px solid;
     padding-inline: 1rem;
     border-radius: .4rem;
     box-shadow: 18px 18px 17px -3px rgba(0,0,0,0.1);
+
+    @media (width < 850px) {
+        --search-results-max-width: 400px; 
+    }
 
 }
 
@@ -42,8 +50,6 @@ button.pagefind-ui__search-clear {
     
 }
 
-/* .pagefind-search-wrapper {
-} */
 
 [dbg] {
     outline: 1px solid blue;
