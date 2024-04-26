@@ -41,7 +41,6 @@ button.pagefind-ui__search-clear {
     @media (width < 850px) {
         --search-results-max-width: 400px; 
     }
-
 }
 
 .pagefind-ui__message {
