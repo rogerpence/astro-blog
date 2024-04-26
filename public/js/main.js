@@ -1,3 +1,3 @@
-import { hello } from "/js/runtime.js";
+import { hello } from "/js/message.js";
 
 hello();
