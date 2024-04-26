@@ -21,19 +21,19 @@ module.exports = {
       preserve: DO_NOT_PRESERVE_UNRESOLVED_RULE,
     }),
 
-    // ...(process.env.NODE_ENV === "production"
-    //   ? [
-    //       purgecss({
-    //         content: [
-    //           "./src/**/*.html",
-    //           "./src/**/*.astro",
-    //           "./src/**/*.md",
-    //           "./src/**/*.mdx",
-    //         ],
-    //         safelist: [/^:where/, /^:has/, /^:is/],
-    //       }),
-    //     ]
-    //   : []),
+    ...(process.env.NODE_ENV === "production"
+      ? [
+          purgecss({
+            content: [
+              "./src/**/*.html",
+              "./src/**/*.astro",
+              "./src/**/*.md",
+              "./src/**/*.mdx",
+            ],
+            safelist: [/^:where/, /^:has/, /^:is/],
+          }),
+        ]
+      : []),
 
     ...(process.env.NODE_ENV === "production" ? [cssnano()] : []),
   ],
