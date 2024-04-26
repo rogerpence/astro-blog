@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build && pagefind --site dist && powershell copy-item dist/pagefind -destination public/ -recurse -force",
+    "build-prod": "astro check && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "postcss:build": "postcss ./css-dev/style.css ---dir ./src/styles --env production --map",
