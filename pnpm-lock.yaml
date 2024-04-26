@@ -20,6 +20,9 @@ dependencies:
   astro-icon:
     specifier: ^1.1.0
     version: 1.1.0
+  pagefind:
+    specifier: ^1.1.0
+    version: 1.1.0
   typescript:
     specifier: ^5.4.2
     version: 5.4.2
@@ -40,9 +43,6 @@ devDependencies:
   open-props:
     specifier: ^1.6.21
     version: 1.6.21
-  pagefind:
-    specifier: ^1.1.0
-    version: 1.1.0
   postcss:
     specifier: ^8.4.38
     version: 8.4.38
@@ -900,7 +900,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@pagefind/darwin-x64@1.1.0:
@@ -908,7 +908,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@pagefind/linux-arm64@1.1.0:
@@ -916,7 +916,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@pagefind/linux-x64@1.1.0:
@@ -924,7 +924,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@pagefind/windows-x64@1.1.0:
@@ -932,7 +932,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@rollup/pluginutils@4.2.1:
@@ -3921,7 +3921,7 @@ packages:
       '@pagefind/linux-arm64': 1.1.0
       '@pagefind/linux-x64': 1.1.0
       '@pagefind/windows-x64': 1.1.0
-    dev: true
+    dev: false
 
   /parse-entities@4.0.1:
     resolution: {integrity: sha512-SWzvYcSJh4d/SGLIOQfZ/CoNv6BTlI6YEQ7Nj82oDVnRpwe/Z/F1EMx42x3JAOwGBlCjeCH0BRJQbQ/opHL17w==}
