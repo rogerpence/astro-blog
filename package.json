@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build && pagefind --site dist && powershell copy-item dist/pagefind -destination public/ -recurse",
+    "build": "astro check && astro build && pagefind --site dist && powershell copy-item dist/pagefind -destination public/ -recurse -force",
     "preview": "astro preview",
     "astro": "astro",
     "postcss:build": "postcss ./css-dev/style.css ---dir ./src/styles --env production --map",
