@@ -9,6 +9,8 @@
 @import "./app.css";
 @import "./tags-list.css";
 @import "./post-listing.css";
+@import "../public/pagefind/pagefind-ui.css";
 @import "./pagefind-custom.css";
+
 
 
