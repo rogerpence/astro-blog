@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "index": "pagefind --site dist && powershell copy-item dist/pagefind -destination public/ -recurse -force",
     "build": "astro check && astro build && pagefind --site dist && powershell copy-item dist/pagefind -destination public/ -recurse -force",
     "build-prod": "astro check && astro build && pagefind --site dist",
     "preview": "astro preview",
