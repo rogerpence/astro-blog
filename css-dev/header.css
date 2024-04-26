@@ -3,15 +3,18 @@ header {
         text-decoration: none;  
         cursor: pointer;
     }
-
     
     & div.nav-wrapper {
         height: 5vh;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-direction: rows;
+        flex-direction: row;
         padding-inline: 2rem;
+
+        & .search-nav-wrapper {
+            display: flex;
+        }
     
         & ul {    
             display: flex;

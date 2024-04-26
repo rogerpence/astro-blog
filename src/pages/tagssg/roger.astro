@@ -1,0 +1,42 @@
+---
+import { getCollection, getEntryBySlug } from "astro:content";
+import { getTagsFromPosts } from "$scripts/utils";
+
+const posts = await getCollection("posts");
+const tags = getTagsFromPosts(posts);
+
+console.log(tags);
+
+// export const getStaticPaths = async () => {
+//   let flatPosts;
+
+//   const posts = await getCollection("postsbytag");
+
+//   flatPosts = posts.reduce((acc, post) => {
+//     post.data.tags.forEach((tag) => {
+//       const flatObj = { tag, ...post };
+//       acc.push(flatObj);
+//     });
+//     return acc;
+//   }, []);
+
+//   const paths = flatPosts.map((post) => {
+//     return {
+//       params: {
+//         tag: post.tag,
+//       },
+//       props: {
+//         post,
+//       },
+//     };
+//   });
+
+//   return paths;
+// };
+
+//const { tag } = Astro.params;
+//console.log(tag);
+---
+
+this is roger page
+

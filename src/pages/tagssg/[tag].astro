@@ -1,0 +1,41 @@
+---
+// @ts-nocheck
+
+import PostListing from "$components/PostListing.astro";
+import ContentLayout from "$layouts/ContentLayout.astro";
+
+import { getCollection, getEntryBySlug } from "astro:content";
+
+import { getTagsFromPosts } from "$scripts/utils";
+
+export const getStaticPaths = async () => {
+  const posts = await getCollection("posts");
+  const tags = getTagsFromPosts(posts);
+
+  const tagsPaths = tags.reduce((acc, tag) => {
+    const filteredPosts = posts.filter((post) => {
+      return post.data.tags.includes(tag.tag.trim());
+    });
+
+    console.log(JSON.stringify(acc, null, 4));
+    acc.push({
+      params: {
+        tag: tag.tag,
+      },
+      props: { posts: filteredPosts },
+    });
+    return acc;
+  }, []);
+
+  return tagsPaths;
+};
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<ContentLayout title="rogerpence.com | Blog">
+  <div>
+    {posts.map((post) => <PostListing {post} />)}
+  </div>
+</ContentLayout>

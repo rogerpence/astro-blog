@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="viewport" content="width=device-width">
+  <meta name="generator" content="Astro v4.5.5">
+
+  <title></title>
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+  <script src="/pagefind/pagefind-ui.js"></script>
+<link rel="stylesheet" href="/_astro/index.DrPt2put.css" /><script type="module" src="/_astro/hoisted.O1mARHHx.js"></script></head>
+  <body>
+    <div class="site">
+      <header class="site__header">
+  <!-- <Icon name="rp" /> -->
+  <div class="nav-wrapper">
+    <div><a href="/">rogerpence.com</a></div>
+
+    <div class="pagefind-search-wrapper">
+  <div class="pagefind-search-input" id="search"></div>
+  
+</div>
+    <ul role="list">
+  <li>
+        <a href="/posts/1">Posts</a>
+      </li><li>
+        <a href="/links">Links</a>
+      </li><li>
+        <a href="/about">About</a>
+      </li>
+</ul>
+  </div>
+</header>
+      <main class="body-background">
+        <div class="use-sidebar content-section">
+          
+  <div class="content">
+  <div class="use-sidebar">
+    <article class="column-main">
+      <h1>Comparing SSG versus SSR content collections</h1>
+      <div class="small-tags-list">
+  <span>astro</span>
+</div>
+      <pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">---</span></span>
+<span class="line"><span style="color:var(--astro-code-token-comment)">// @ts-nocheck</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">import</span><span style="color:var(--astro-code-color-text)"> PostListing </span><span style="color:var(--astro-code-token-keyword)">from</span><span style="color:var(--astro-code-token-string-expression)"> &quot;$components/PostListing.astro&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">import</span><span style="color:var(--astro-code-color-text)"> ContentLayout </span><span style="color:var(--astro-code-token-keyword)">from</span><span style="color:var(--astro-code-token-string-expression)"> &quot;$layouts/ContentLayout.astro&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">import</span><span style="color:var(--astro-code-color-text)"> { getCollection</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-color-text)"> getEntryBySlug } </span><span style="color:var(--astro-code-token-keyword)">from</span><span style="color:var(--astro-code-token-string-expression)"> &quot;astro:content&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">import</span><span style="color:var(--astro-code-color-text)"> { getTagsFromPosts } </span><span style="color:var(--astro-code-token-keyword)">from</span><span style="color:var(--astro-code-token-string-expression)"> &quot;$scripts/utils&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">export</span><span style="color:var(--astro-code-token-keyword)"> const</span><span style="color:var(--astro-code-token-function)"> getStaticPaths</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-keyword)"> async</span><span style="color:var(--astro-code-color-text)"> () </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">  const</span><span style="color:var(--astro-code-token-constant)"> posts</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-keyword)"> await</span><span style="color:var(--astro-code-token-function)"> getCollection</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;posts&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">  const</span><span style="color:var(--astro-code-token-constant)"> tags</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-function)"> getTagsFromPosts</span><span style="color:var(--astro-code-color-text)">(posts);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">  const</span><span style="color:var(--astro-code-token-constant)"> tagsPaths</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> tags</span><span style="color:var(--astro-code-token-function)">.reduce</span><span style="color:var(--astro-code-color-text)">((acc</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-color-text)"> tag) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    const</span><span style="color:var(--astro-code-token-constant)"> filteredPosts</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> posts</span><span style="color:var(--astro-code-token-function)">.filter</span><span style="color:var(--astro-code-color-text)">((post) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">      return</span><span style="color:var(--astro-code-token-constant)"> post</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">data</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">tags</span><span style="color:var(--astro-code-token-function)">.includes</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-constant)">tag</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">tag</span><span style="color:var(--astro-code-token-function)">.trim</span><span style="color:var(--astro-code-color-text)">());</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-constant)">    acc</span><span style="color:var(--astro-code-token-function)">.push</span><span style="color:var(--astro-code-color-text)">({</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">      params</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">        tag</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> tag</span><span style="color:var(--astro-code-color-text)">.tag</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">      }</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">      props</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-color-text)"> { posts</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-color-text)"> filteredPosts }</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    });</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">    return</span><span style="color:var(--astro-code-color-text)"> acc;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  }</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-color-text)"> []);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">  return</span><span style="color:var(--astro-code-color-text)"> tagsPaths;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-color-text)"> { </span><span style="color:var(--astro-code-token-constant)">tag</span><span style="color:var(--astro-code-color-text)"> } </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-constant)"> Astro</span><span style="color:var(--astro-code-color-text)">.params;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-color-text)"> { </span><span style="color:var(--astro-code-token-constant)">posts</span><span style="color:var(--astro-code-color-text)"> } </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-constant)"> Astro</span><span style="color:var(--astro-code-color-text)">.props;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">&lt;</span><span style="color:var(--astro-code-token-constant)">ContentLayout</span><span style="color:var(--astro-code-token-function)"> title</span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-string-expression)">&quot;rogerpence.com | Blog&quot;</span><span style="color:var(--astro-code-color-text)">&gt;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  &lt;</span><span style="color:var(--astro-code-token-string-expression)">div</span><span style="color:var(--astro-code-color-text)">&gt;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    {</span><span style="color:var(--astro-code-token-constant)">posts</span><span style="color:var(--astro-code-token-function)">.map</span><span style="color:var(--astro-code-color-text)">((post) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> &lt;</span><span style="color:var(--astro-code-token-constant)">PostListing</span><span style="color:var(--astro-code-color-text)"> {post} /&gt;)}</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  &lt;/</span><span style="color:var(--astro-code-token-string-expression)">div</span><span style="color:var(--astro-code-color-text)">&gt;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">&lt;/</span><span style="color:var(--astro-code-token-constant)">ContentLayout</span><span style="color:var(--astro-code-color-text)">&gt;</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, the value that <code>getStaticPaths</code> returns is shown below. It includes
+a <code>params</code> key with the given tag value and a <code>props</code> key that includes the array
+of <code>posts</code> tagged with <code>sql</code>.</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-color-text)">    {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">        &quot;params&quot;</span><span style="color:var(--astro-code-color-text)">: {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">            &quot;tag&quot;</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-string-expression)"> &quot;sql&quot;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">        }</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">        &quot;props&quot;</span><span style="color:var(--astro-code-color-text)">: {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">            &quot;posts&quot;</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-color-text)"> [</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">                {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">                    &quot;id&quot;</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-string-expression)"> &quot;sql-snippets.mdx&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">                    &quot;slug&quot;</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-string-expression)"> &quot;sql-snippets&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">                    &quot;body&quot;</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-string-expression)"> &quot;--post body here--&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">                    &quot;collection&quot;</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-string-expression)"> &quot;posts&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">                    &quot;data&quot;</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">                        &quot;title&quot;</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-string-expression)"> &quot;SQL snippets&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">                        &quot;description&quot;</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-string-expression)"> &quot;SQL snippets&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">                        &quot;tags&quot;</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-color-text)"> [</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">                            &quot;sql&quot;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">                        ]</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">                        &quot;date_published&quot;</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> null</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">                        &quot;date_added&quot;</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-string-expression)"> &quot;2024-04-17T11:36:09.000Z&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">                        &quot;date_updated&quot;</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-string-expression)"> &quot;2024-04-17T11:36:13.000Z&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-token-string-expression)">                        &quot;pinned&quot;</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> false</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">                    }</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">                }</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">                {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">                   ...</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">                {</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">            ]</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">        }</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    }</span></span>
+<span class="line"></span></code></pre>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">---</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">export</span><span style="color:var(--astro-code-token-keyword)"> const</span><span style="color:var(--astro-code-token-constant)"> prerender</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> false</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">import</span><span style="color:var(--astro-code-color-text)"> PostListing </span><span style="color:var(--astro-code-token-keyword)">from</span><span style="color:var(--astro-code-token-string-expression)"> &quot;$components/PostListing.astro&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">import</span><span style="color:var(--astro-code-color-text)"> ContentLayout </span><span style="color:var(--astro-code-token-keyword)">from</span><span style="color:var(--astro-code-token-string-expression)"> &quot;$layouts/ContentLayout.astro&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">import</span><span style="color:var(--astro-code-color-text)"> { getCollection</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-color-text)"> getEntryBySlug } </span><span style="color:var(--astro-code-token-keyword)">from</span><span style="color:var(--astro-code-token-string-expression)"> &quot;astro:content&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-color-text)"> { </span><span style="color:var(--astro-code-token-constant)">tag</span><span style="color:var(--astro-code-color-text)"> } </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-constant)"> Astro</span><span style="color:var(--astro-code-color-text)">.params;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-constant)"> posts</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-keyword)"> await</span><span style="color:var(--astro-code-token-function)"> getCollection</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;posts&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-constant)"> filteredPosts</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> posts</span><span style="color:var(--astro-code-token-function)">.filter</span><span style="color:var(--astro-code-color-text)">((post) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">  return</span><span style="color:var(--astro-code-token-constant)"> post</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">data</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">tags</span><span style="color:var(--astro-code-token-function)">.includes</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-constant)">tag</span><span style="color:var(--astro-code-token-function)">.trim</span><span style="color:var(--astro-code-color-text)">());</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">});</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">&lt;</span><span style="color:var(--astro-code-token-constant)">ContentLayout</span><span style="color:var(--astro-code-token-function)"> title</span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-string-expression)">&quot;rogerpence.com | Blog&quot;</span><span style="color:var(--astro-code-color-text)">&gt;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  &lt;</span><span style="color:var(--astro-code-token-string-expression)">div</span><span style="color:var(--astro-code-color-text)">&gt;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">    {</span><span style="color:var(--astro-code-token-constant)">filteredPosts</span><span style="color:var(--astro-code-token-function)">.map</span><span style="color:var(--astro-code-color-text)">((post) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> &lt;</span><span style="color:var(--astro-code-token-constant)">PostListing</span><span style="color:var(--astro-code-color-text)"> {post} /&gt;)}</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">  &lt;/</span><span style="color:var(--astro-code-token-string-expression)">div</span><span style="color:var(--astro-code-color-text)">&gt;</span></span>
+<span class="line"><span style="color:var(--astro-code-color-text)">&lt;/</span><span style="color:var(--astro-code-token-constant)">ContentLayout</span><span style="color:var(--astro-code-color-text)">&gt;</span></span>
+<span class="line"></span></code></pre>
+    </article>
+    <aside>
+      <div>
+        <div class="global-tags-list">
+  <a href="/tag/astro">
+        <span>
+          astro
+          <span class="tag-count-circle">4</span>
+        </span>
+      </a><a href="/tag/cs">
+        <span>
+          cs
+          <span class="tag-count-circle">2</span>
+        </span>
+      </a><a href="/tag/css">
+        <span>
+          css
+          <span class="tag-count-circle">3</span>
+        </span>
+      </a><a href="/tag/html">
+        <span>
+          html
+          <span class="tag-count-circle">1</span>
+        </span>
+      </a><a href="/tag/javascript">
+        <span>
+          javascript
+          <span class="tag-count-circle">1</span>
+        </span>
+      </a><a href="/tag/npm">
+        <span>
+          npm
+          <span class="tag-count-circle">1</span>
+        </span>
+      </a><a href="/tag/powershell">
+        <span>
+          powershell
+          <span class="tag-count-circle">1</span>
+        </span>
+      </a>
+</div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+        </div>
+      </main>
+      <footer data-astro-cid-sz7xmlte>
+  Copyright &copy; 2024 by Roger Pence. All rights reserved.
+</footer>
+    </div>
+  </body></html>

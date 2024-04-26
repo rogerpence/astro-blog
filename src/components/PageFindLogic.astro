@@ -1,0 +1,24 @@
+<div class="pagefind-search-wrapper">
+  <div class="pagefind-search-input" id="search"></div>
+  <script>
+    window.addEventListener("DOMContentLoaded", (event) => {
+      // @ts-ignore
+      new PagefindUI({
+        element: "#search",
+        showSubResults: false,
+        showImages: false,
+        pageSize: 5,
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key == "Escape") {
+          const btn = document.querySelector(
+            "button.pagefind-ui__search-clear"
+          );
+          // @ts-ignore
+          if (btn) btn.click();
+        }
+      });
+    });
+  </script>
+</div>

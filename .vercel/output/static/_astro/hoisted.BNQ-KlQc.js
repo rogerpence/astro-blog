@@ -1,0 +1,1 @@
+window.addEventListener("DOMContentLoaded",t=>{new PagefindUI({element:"#search",showSubResults:!1,showImages:!1,pageSize:5}),document.addEventListener("keydown",function(n){if(n.key=="Escape"){const e=document.querySelector("button.pagefind-ui__search-clear");e&&e.click()}})});

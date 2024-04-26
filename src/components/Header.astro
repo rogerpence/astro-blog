@@ -1,13 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
 import MainNav from "./MainNav.astro";
+import PageFindLogic from "./PageFindLogic.astro";
 ---
 
 <header class="site__header">
   <!-- <Icon name="rp" /> -->
   <div class="nav-wrapper">
     <div><a href="/">rogerpence.com</a></div>
-
-    <MainNav />
+    <div class="search-nav-wrapper">
+      <PageFindLogic />
+      <MainNav />
+    </div>
   </div>
 </header>

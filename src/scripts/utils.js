@@ -82,6 +82,19 @@ export function getContentData(obj) {
 }
 
 export function getTagsFromPosts(posts) {
+  // [
+  //     { tag: 'astro', count: 4 },
+  //     { tag: 'cs', count: 2 },
+  //     { tag: 'css', count: 3 },
+  //     { tag: 'html', count: 1 },
+  //     { tag: 'javascript', count: 1 },
+  //     { tag: 'npm', count: 1 },
+  //     { tag: 'powershell', count: 2 },
+  //     { tag: 'python', count: 3 },
+  //     { tag: 'sql', count: 1 },
+  //     { tag: 'sql-server', count: 1 }
+  //   ]
+
   const tags = posts.reduce((acc, post) => {
     const tags = post.data.tags;
     acc.push(...tags);

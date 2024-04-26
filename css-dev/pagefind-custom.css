@@ -1,0 +1,54 @@
+.pagefind-ui {
+    z-index: 25000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.pagefind-ui__result {
+    padding-block: .5rem 1rem !important;
+}
+
+button.pagefind-ui__search-clear {
+    font-size: .8rem !important;
+    color: rgb(76, 73, 73) !important;
+}
+
+.pagefind-ui__drawer {
+    --pagefind-ui-scale: .8;
+
+    position: absolute;
+    width: 800px;
+
+    
+    top: 2.5rem;
+    left: 50%;    
+    margin-left: -400px; 
+    
+   
+
+    background-color: white;
+    border: lightgray 1px solid;
+    padding-inline: 1rem;
+    border-radius: .4rem;
+    box-shadow: 18px 18px 17px -3px rgba(0,0,0,0.1);
+
+}
+
+.pagefind-ui__message {
+    padding-top: 0 !important;
+    
+    
+}
+
+/* .pagefind-search-wrapper {
+} */
+
+[dbg] {
+    outline: 1px solid blue;
+}
+
+:root {
+    --pagefind-ui-scale: .6
+} 
