@@ -8,6 +8,14 @@
         showSubResults: false,
         showImages: false,
         pageSize: 5,
+        processTerm: (term) => {
+          console.log("term", term);
+          return term;
+        },
+        processResult: (result) => {
+          console.log("result", JSON.stringify(result, null, 4));
+          return result.sub_results.excerpt;
+        },
       });
 
       document.addEventListener("keydown", function (event) {
