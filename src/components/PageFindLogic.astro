@@ -27,6 +27,14 @@
           if (btn) btn.click();
         }
       });
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "/" || event.key === ".") {
+          event.preventDefault();
+          // @ts-ignore
+          document.querySelector("div#search input").focus();
+        }
+      });
     });
   </script>
 </div>

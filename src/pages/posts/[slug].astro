@@ -1,7 +1,4 @@
 ---
-import MainLayout from "$layouts/MainLayout.astro";
-
-import type { CollectionEntry } from "astro:content";
 import { getCollection, getEntryBySlug } from "astro:content";
 
 import type { Props } from "$scripts/types.ts";
@@ -20,7 +17,7 @@ export const getStaticPaths = async () => {
     };
   });
 
-  console.log("paths", paths);
+  //   console.log("paths", paths);
 
   return paths;
 };
@@ -29,12 +26,10 @@ export const getStaticPaths = async () => {
 //   post: CollectionEntry<"posts">;
 // };
 
-//console.log("props", Astro.props);
-
 const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<ContentLayout title="rogerpence.com | Home">
+<ContentLayout title="rogerpence.com | Home" {post}>
   <Content />
 </ContentLayout>

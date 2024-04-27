@@ -1,15 +1,18 @@
+---
+const { post } = Astro.props;
+
+let description = "non-post page";
+
+if (post && post.data && post.data.description)
+  description = post.data.description;
+---
+
 <head>
   <meta charset="utf-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
-  <meta
-    data-pagefind-meta="meta[content]"
-    name="description"
-    content="hello from description meta data"
-  />
-
-  <!-- roger pence -->
+  <meta name="description" content={description} />
 
   <title>{Astro.props.title}</title>
 

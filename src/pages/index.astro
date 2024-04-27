@@ -18,10 +18,14 @@ const options = {
 
 const filteredPosts = filterBlogPosts(posts, options);
 
-//console.log(posts);
+const post = {
+  data: {
+    description: "home page",
+  },
+};
 ---
 
-<ContentLayout title="rogerpence.com | Blog">
+<ContentLayout title="rogerpence.com | Blog" {post}>
   <div>
     {filteredPosts.map((post) => <PostListing {post} />)}
   </div>

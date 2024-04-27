@@ -4,6 +4,8 @@ import "$styles/style.css";
 import Head from "$components/Head.astro";
 import Header from "$components/Header.astro";
 import Footer from "$components/Footer.astro";
+
+const { post } = Astro.props;
 ---
 
 <script>
@@ -11,10 +13,7 @@ import Footer from "$components/Footer.astro";
 </script>
 
 <html lang="en">
-  <!-- head -->
-  <Head />
-  <!-- head -->
-
+  <Head {post} />
   <body>
     <div class="site">
       <Header />
