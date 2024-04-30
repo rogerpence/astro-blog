@@ -15,17 +15,12 @@
         },
 
         processResult: (result) => {
-          result.excerpt =
-            "<span class='pf-desc'>" +
-            result.meta.description +
-            "</span><br>" +
-            "<span class='pf-tags'>tags: " +
-            result.meta.tags +
-            "</span>";
+          result.excerpt = `<span class='pagefind-desc'>${result.meta.description}</span><br><span class='pagefind-tags'>tags: ${result.meta.tags}</span>`;
 
           //console.log("result", JSON.stringify(result, null, 4));
 
           return result;
+          console.log("✌️result --->", result);
         },
       });
 

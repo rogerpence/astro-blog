@@ -23,26 +23,30 @@ button.pagefind-ui__search-clear {
     display: none !important;
 }
 
-.pf-desc {
+.pagefind-desc {
     color: gray;
     font-size: .9rem;
+    padding-inline-start: 1rem;
 }
 
-.pf-tags {
+.pagefind-tags {
     color: gray;
     font-size: .8rem;
     font-style: italic;
+    padding-inline-start: 2rem;
 }
 
 .pagefind-ui__drawer {
     --pagefind-ui-scale: .8;
     --search-results-max-width: 800px; 
+    overflow-y: scroll !important;
 
     /* position: absolute;
     width: var(--search-results-max-width);    
     top: 2.5rem;
     left: 50%;    
     margin-left: calc((var(--search-results-max-width) / 2) * -1);  */
+    max-height: 80vh;
 
     position: fixed;
     width: var(--search-results-max-width);    
@@ -52,7 +56,7 @@ button.pagefind-ui__search-clear {
    
     background-color: white;
     border: lightgray 1px solid;
-    padding-inline: 1rem;
+    padding-inline: 1rem;    
     border-radius: .4rem;
     box-shadow: 18px 18px 17px -3px rgba(0,0,0,0.1);
 
@@ -65,6 +69,12 @@ button.pagefind-ui__search-clear {
     padding-top: 0 !important;
     
     
+}
+
+.pagefind-ui__button {
+    margin-bottom: 1rem !important;
+    background-color: blue !important;
+    color: white !important;
 }
 
 

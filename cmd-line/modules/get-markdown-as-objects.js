@@ -8,22 +8,12 @@ import { getMarkdownObject } from "./markdown-object.js";
 import { StopWatch } from "./stopwatch.js";
 const sw = new StopWatch();
 
-//const pathPrefix = "../../routes/markdown";
-//const pathPrefix =
-//	'C://Users//thumb//Documents//Projects//svelte//asna-project-ocho//src//routes//markdown';
-
-//let folderInfo = {};
-
 let tags = [];
 
 export const getSlug = (foldername, filename) => {
   let slug = filename.split(".")[0];
   return `/${foldername}/${slug}`;
 };
-
-// const diag = (obj) => {
-//   console.log(JSON.stringify(obj, null, 4));
-// };
 
 const getFolderObjects = (pathPrefix, folder) => {
   const SEP = String.fromCharCode(0x0091);
@@ -50,17 +40,10 @@ const getFolderObjects = (pathPrefix, folder) => {
           )
         );
       } else {
-        //folderMap.push(md_obj);
-        // const meta = {
-        //   description: md_obj.frontmatter.description,
-        //   tags: md_obj.frontmatter.tags,
-        // };
-
         const result = {
           url: `${getSlug(folder, f.name)}`,
 
-          //          content: `${JSON.stringify(meta)}${SEP}${md_obj.content}`,
-          content: md_obj.content,
+          content: md_obj.content + " " + md_obj.frontmatter.tags.join(" "),
           meta: {
             title: md_obj.frontmatter.title,
             description: md_obj.frontmatter.description,
@@ -74,13 +57,6 @@ const getFolderObjects = (pathPrefix, folder) => {
           ],
 
           language: "en",
-          //   title: md_obj.frontmatter.title,
-          //   description: md_obj.frontmatter.description,
-          //   date_published: md_obj.frontmatter.date_published,
-          //   folder: folder,
-          //   filename: f.name,
-          //   tags: md_obj.frontmatter.tags,
-          //   tag1: md_obj.frontmatter.tags[0] ?? "",
         };
 
         folderMap[0].docs.push(result);
@@ -106,13 +82,8 @@ function iterateContent() {
   return result;
 }
 
-//export function getMarkDownObjects() {
-
 const output_path =
   "C:\\Users\\thumb\\Documents\\Projects\\astro-4\\blog-again\\cmd-line\\data";
 const result = iterateContent();
 const outfile_name = path.join(output_path, "docmap.js");
 utes.writeObjectsToFile(result, outfile_name, "docmap");
-
-//  return result;
-//}
