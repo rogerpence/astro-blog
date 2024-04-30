@@ -5,9 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "index": "powershell ./refresh-index.ps1",
-    "build": "astro check && astro build && powershell ./refresh-index.ps1",
-    "tester": "powershell ./tester.ps1",
+    "create-index": "powershell ./post-build.ps1",
+    "build": "astro check && astro build && powershell ./post-build.ps1",
     "preview": "astro preview",
     "astro": "astro",
     "postcss:build": "postcss ./css-dev/style.css ---dir ./src/styles --env production --map",

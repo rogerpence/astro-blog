@@ -8,6 +8,7 @@
 
 .pagefind-ui__result {
     padding-block: .5rem 1rem !important;
+    border-top: 1px solid darkgray !important;
 }
 
 button.pagefind-ui__search-clear {
@@ -50,11 +51,11 @@ button.pagefind-ui__search-clear {
 
     position: fixed;
     width: var(--search-results-max-width);    
-    top: 2.5rem;
+    top: 3.5rem;
     left: 50%;
     transform: translateX(-50%);
    
-    background-color: white;
+    background-color: #e1dedd;
     border: lightgray 1px solid;
     padding-inline: 1rem;    
     border-radius: .4rem;
