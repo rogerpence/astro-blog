@@ -16,21 +16,39 @@ button.pagefind-ui__search-clear {
 }
 
 .pagefind-search-wrapper {
-    position: relative;
+    /* position: relative; */
 } 
 
+.pagefind-ui__result-tags {
+    display: none !important;
+}
+
+.pf-desc {
+    color: gray;
+    font-size: .9rem;
+}
+
+.pf-tags {
+    color: gray;
+    font-size: .8rem;
+    font-style: italic;
+}
 
 .pagefind-ui__drawer {
     --pagefind-ui-scale: .8;
     --search-results-max-width: 800px; 
 
-    position: absolute;
-    width: var(--search-results-max-width); 
-    
+    /* position: absolute;
+    width: var(--search-results-max-width);    
     top: 2.5rem;
     left: 50%;    
+    margin-left: calc((var(--search-results-max-width) / 2) * -1);  */
 
-    margin-left: calc((var(--search-results-max-width) / 2) * -1); 
+    position: fixed;
+    width: var(--search-results-max-width);    
+    top: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
    
     background-color: white;
     border: lightgray 1px solid;

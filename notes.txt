@@ -1,0 +1,103 @@
+result {
+    "url": "/posts/demo/",
+    "content": "content here...",
+    "word_count": 349,
+    "filters": {},
+    "meta": {
+        "title": "Demo page for css"
+    },
+    "anchors": [
+        {
+            "element": "h2",
+            "id": "h2-heading",
+            "text": "H2 heading",
+            "location": 8
+        },
+        {
+            "element": "h3",
+            "id": "h3-heading",
+            "text": "H3 heading",
+            "location": 10
+        },
+        {
+            "element": "h4",
+            "id": "h4-heading",
+            "text": "H4 heading",
+            "location": 12
+        }
+    ],
+    "weighted_locations": [
+        {
+            "weight": 7,
+            "balanced_score": 25095.023,
+            "location": 7
+        }
+    ],
+    "locations": [
+        7
+    ],
+    "raw_content": "content here...",
+    "raw_url": "/posts/demo/",
+    "excerpt": "rogerpence.com. Posts Links About Demo page for <mark>css.</mark> H2 heading. H3 heading. H4 heading. This is a paragraph with an anchor tag. Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
+    "sub_results": [
+        {
+            "title": "Demo page for css",
+            "url": "/posts/demo/",
+            "weighted_locations": [
+                {
+                    "weight": 7,
+                    "balanced_score": 25095.023,
+                    "location": 7
+                }
+            ],
+            "locations": [
+                7
+            ],
+            "excerpt": "rogerpence.com. Posts Links About Demo page for <mark>css.</mark>"
+        }
+    ]
+}
+
+
+Object from default index.
+
+result {
+    "url": "/output/static/posts/better-anchor-title/",
+    "content": "A better anchor title. htmlcss This is some text. asdfasdfasdf. a { position: relative; display: inline-block; margin-top: 1rem; } Other words here. a[data-title]:hover::after { content: attr(data-title); position: absolute; background-color: black; color: white; top: -1.7rem; left: -2rem; padding: 0.1rem 0.4rem; border-radius: 5px; } astro 4 cs 2 css 3 html 1 javascript 1 npm 1 powershell 1",
+    "word_count": 56,
+    "filters": {},
+    "meta": {
+        "title": "A better anchor title"
+    },
+    "anchors": [],
+    "weighted_locations": [
+        {
+            "weight": 1,
+            "balanced_score": 512.1433,
+            "location": 46
+        }
+    ],
+    "locations": [
+        46
+    ],
+    "raw_content": "A better anchor title. htmlcss This is some text. asdfasdfasdf. a { position: relative; display: inline-block; margin-top: 1rem; } Other words here. a[data-title]:hover::after { content: attr(data-title); position: absolute; background-color: black; color: white; top: -1.7rem; left: -2rem; padding: 0.1rem 0.4rem; border-radius: 5px; } astro 4 cs 2 css 3 html 1 javascript 1 npm 1 powershell 1",
+    "raw_url": "/output/static/posts/better-anchor-title/",
+    "excerpt": "position: absolute; background-color: black; color: white; top: -1.7rem; left: -2rem; padding: 0.1rem 0.4rem; border-radius: 5px; } astro 4 cs 2 <mark>css</mark> 3 html 1 javascript 1 npm 1 powershell 1",
+    "sub_results": [
+        {
+            "title": "A better anchor title",
+            "url": "/output/static/posts/better-anchor-title/",
+            "weighted_locations": [
+                {
+                    "weight": 1,
+                    "balanced_score": 512.1433,
+                    "location": 46
+                }
+            ],
+            "locations": [
+                46
+            ],
+            "excerpt": "position: absolute; background-color: black; color: white; top: -1.7rem; left: -2rem; padding: 0.1rem 0.4rem; border-radius: 5px; } astro 4 cs 2 <mark>css</mark> 3 html 1 javascript 1 npm 1 powershell 1"
+        }
+    ]
+}

@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width">
-  <meta name="generator" content="Astro v4.5.5">
+  <meta name="generator" content="Astro v4.7.0">
   <!--  -->
   <meta name="description" content="Astro notes">
   <!--  -->
@@ -14,7 +14,7 @@
   <title></title>
 
   <script src="/pagefind/pagefind-ui.js"></script>
-<link rel="stylesheet" href="/_astro/index.DyzS-YJm.css" /><script type="module" src="/_astro/hoisted.CXjF2JFW.js"></script></head>
+<link rel="stylesheet" href="/_astro/index.DFHzBmL5.css"><script type="module" src="/_astro/hoisted.B8LucRpl.js"></script></head>
   <body>
     <div class="site">
       <header class="site__header">
@@ -49,12 +49,12 @@
   <span>astro</span>
 </div>
       <h3 id="search-a-collection-for-a-given-set">Search a collection for a given set</h3>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-constant)"> findBlogEntries</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-keyword)"> await</span><span style="color:var(--astro-code-token-function)"> getCollection</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;blog&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-color-text)"> ({ data }) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="js"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-constant)"> findBlogEntries</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-keyword)"> await</span><span style="color:var(--astro-code-token-function)"> getCollection</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;blog&quot;</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-color-text)"> ({ data }) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
 <span class="line"><span style="color:var(--astro-code-token-keyword)">  return</span><span style="color:var(--astro-code-token-constant)"> data</span><span style="color:var(--astro-code-color-text)">.title </span><span style="color:var(--astro-code-token-keyword)">==</span><span style="color:var(--astro-code-token-string-expression)"> &quot;Toast notifications for .NET 6+ Windows apps&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
 <span class="line"><span style="color:var(--astro-code-color-text)">});</span></span>
 <span class="line"></span></code></pre>
 <h3 id="get-last-four-more-recent-posts">Get last four more recent posts</h3>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-constant)"> top4</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-color-text)"> posts</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="js"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-constant)"> top4</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-color-text)"> posts</span></span>
 <span class="line"><span style="color:var(--astro-code-token-function)">  .sort</span><span style="color:var(--astro-code-color-text)">((a</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-color-text)"> b) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-token-constant)"> a</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">data</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">dateAdded</span><span style="color:var(--astro-code-token-function)">.valueOf</span><span style="color:var(--astro-code-color-text)">() </span><span style="color:var(--astro-code-token-keyword)">-</span><span style="color:var(--astro-code-token-constant)"> b</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">data</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">dateAdded</span><span style="color:var(--astro-code-token-function)">.valueOf</span><span style="color:var(--astro-code-color-text)">())</span></span>
 <span class="line"><span style="color:var(--astro-code-token-comment)">  //.slice(0,4)</span></span>
 <span class="line"><span style="color:var(--astro-code-token-function)">  .map</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-keyword)">function</span><span style="color:var(--astro-code-color-text)"> (item) {</span></span>
@@ -67,23 +67,23 @@
 <span class="line"><span style="color:var(--astro-code-color-text)">  });</span></span>
 <span class="line"></span></code></pre>
 <h3 id="get-posts-with-glob">Get posts with glob</h3>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>  const allPosts = await Astro.glob(&#39;../../posts/*.md&#39;);</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>  const allPosts = await Astro.glob(&#39;../../posts/*.md&#39;);</span></span>
 <span class="line"><span></span></span></code></pre>
 <h3 id="dynamic-urls">dynamic urls</h3>
 <p>First page is blah the /1 is assumed</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>[...page].astro</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>[...page].astro</span></span>
 <span class="line"><span></span></span></code></pre>
 <p>First page is blah/1 the /1 needs to be explicit</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>[page].astro</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>[page].astro</span></span>
 <span class="line"><span></span></span></code></pre>
 <h3 id="c-tag-causes-error-on-npm-run-build"><code>c#</code> tag causes error on <code>npm run build</code></h3>
 <p>Should <code>#</code> in tags (or anywhere else, really) be converted to the entity for <code>#</code> which is <code>&amp;#35;</code></p>
 <h3 id="embedding-an-astro-property-into-an-html-value-attribute">Embedding an Astro property into an HTML value attribute</h3>
 <p>Use a JavaScript template literal as shown below.</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-color-text)">href={`tags/${tag.name}`}</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="html"><code><span class="line"><span style="color:var(--astro-code-color-text)">href={`tags/${tag.name}`}</span></span>
 <span class="line"></span></code></pre>
 <p>If <code>tag.name</code> is <code>astro</code>, the result is:</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-color-text)">href=&quot;tags/astro&quot;</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="html"><code><span class="line"><span style="color:var(--astro-code-color-text)">href=&quot;tags/astro&quot;</span></span>
 <span class="line"></span></code></pre>
 <p>Astro implicitly adds the double quotes around the template literal.</p>
     </article>

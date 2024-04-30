@@ -8,13 +8,24 @@
         showSubResults: false,
         showImages: false,
         pageSize: 5,
+        debounceTimeoutMs: 500,
+
         processTerm: (term) => {
-          console.log("term", term);
           return term;
         },
+
         processResult: (result) => {
-          console.log("result", JSON.stringify(result, null, 4));
-          return result.sub_results.excerpt;
+          result.excerpt =
+            "<span class='pf-desc'>" +
+            result.meta.description +
+            "</span><br>" +
+            "<span class='pf-tags'>tags: " +
+            result.meta.tags +
+            "</span>";
+
+          //console.log("result", JSON.stringify(result, null, 4));
+
+          return result;
         },
       });
 

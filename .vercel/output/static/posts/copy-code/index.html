@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width">
-  <meta name="generator" content="Astro v4.5.5">
+  <meta name="generator" content="Astro v4.7.0">
   <!--  -->
   <meta name="description" content="How to copy code in Astro to clipboard and, optionally, add line numbers.">
   <!--  -->
@@ -14,7 +14,7 @@
   <title></title>
 
   <script src="/pagefind/pagefind-ui.js"></script>
-<link rel="stylesheet" href="/_astro/index.DyzS-YJm.css" /><script type="module" src="/_astro/hoisted.CXjF2JFW.js"></script></head>
+<link rel="stylesheet" href="/_astro/index.DFHzBmL5.css"><script type="module" src="/_astro/hoisted.B8LucRpl.js"></script></head>
   <body>
     <div class="site">
       <header class="site__header">
@@ -53,7 +53,7 @@
 <p>The JavaScript below adds a link in the code block to copy it to the clipboard, as shown below:</p>
 <p><img src="https://rogerpence.dev/collateral/copy-astro-code-to-clipboard.png" alt="collateral/copy-astro-code-to-clipboard.png"/></p>
 <p>Add the JavaScript below to your Astro project’s client-side JavaScript.</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-function)"> copyToClipboard</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-color-text)"> (str) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="js"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-function)"> copyToClipboard</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-color-text)"> (str) </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
 <span class="line"><span style="color:var(--astro-code-token-keyword)">  if</span><span style="color:var(--astro-code-color-text)"> (navigator </span><span style="color:var(--astro-code-token-keyword)">&amp;&amp;</span><span style="color:var(--astro-code-token-constant)"> navigator</span><span style="color:var(--astro-code-color-text)">.clipboard </span><span style="color:var(--astro-code-token-keyword)">&amp;&amp;</span><span style="color:var(--astro-code-token-constant)"> navigator</span><span style="color:var(--astro-code-color-text)">.</span><span style="color:var(--astro-code-token-constant)">clipboard</span><span style="color:var(--astro-code-color-text)">.writeText)</span></span>
 <span class="line"><span style="color:var(--astro-code-token-keyword)">    return</span><span style="color:var(--astro-code-token-constant)"> navigator</span><span style="color:var(--astro-code-token-function)">.</span><span style="color:var(--astro-code-token-constant)">clipboard</span><span style="color:var(--astro-code-token-function)">.writeText</span><span style="color:var(--astro-code-color-text)">(str);</span></span>
 <span class="line"><span style="color:var(--astro-code-token-keyword)">  return</span><span style="color:var(--astro-code-token-constant)"> Promise</span><span style="color:var(--astro-code-token-function)">.reject</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;The Clipboard API is not available.&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
@@ -108,7 +108,7 @@
 <span class="line"><span style="color:var(--astro-code-color-text)">});</span></span>
 <span class="line"></span></code></pre>
 <p>Add these three CSS selectors to your Astro project’s global CSS:</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-function)">.copy-code-label</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="css"><code><span class="line"><span style="color:var(--astro-code-token-function)">.copy-code-label</span><span style="color:var(--astro-code-color-text)"> {</span></span>
 <span class="line"><span style="color:var(--astro-code-token-constant)">  display</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> flex</span><span style="color:var(--astro-code-color-text)">;</span></span>
 <span class="line"><span style="color:var(--astro-code-token-constant)">  justify-content</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> flex-end</span><span style="color:var(--astro-code-color-text)">;</span></span>
 <span class="line"><span style="color:var(--astro-code-token-constant)">  margin-bottom</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> 5</span><span style="color:var(--astro-code-token-keyword)">px</span><span style="color:var(--astro-code-color-text)">;</span></span>
@@ -134,14 +134,14 @@
 </blockquote>
 <h4 id="show-line-numbers-in-asto-displayed-fenced-code">Show line numbers in Asto-displayed fenced code</h4>
 <p>Use the JavaScript to add line numbers to fenced code blocks in Astro. To assign line numbers to a fenced code block, add a <code>&lt;div class=&quot;number-code below&quot;&gt;&lt;/div&gt; just above the markdown fence, leaving one blank line between the </code>div` tag and the fence (as shown below).</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-color-text)">&lt;div class=&quot;number-code below&quot;&gt;&lt;/div</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:var(--astro-code-color-text)">&lt;div class=&quot;number-code below&quot;&gt;&lt;/div</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:var(--astro-code-token-string)">```</span></span>
 <span class="line"><span style="color:var(--astro-code-token-string)">    ... code to display here</span></span>
 <span class="line"><span style="color:var(--astro-code-token-string)">```</span></span>
 <span class="line"></span></code></pre>
 <p>Add the Javascript <code>addLineNumbers</code> function to the Astro app’s client-side JavaScript.</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-function)"> addLineNumbers</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-color-text)"> () </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="js"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-function)"> addLineNumbers</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-color-text)"> () </span><span style="color:var(--astro-code-token-keyword)">=&gt;</span><span style="color:var(--astro-code-color-text)"> {</span></span>
 <span class="line"><span style="color:var(--astro-code-token-keyword)">  const</span><span style="color:var(--astro-code-token-constant)"> snippetInstances</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-constant)"> document</span><span style="color:var(--astro-code-token-function)">.querySelectorAll</span><span style="color:var(--astro-code-color-text)">(</span></span>
 <span class="line"><span style="color:var(--astro-code-token-string-expression)">    &quot;div.number-code-below + small +  pre &gt; code&quot;</span></span>
 <span class="line"><span style="color:var(--astro-code-color-text)">  );</span></span>
@@ -172,7 +172,7 @@
 <span class="line"><span style="color:var(--astro-code-color-text)">};</span></span>
 <span class="line"></span></code></pre>
 <p>Call the addLineNumbers() function after the page loads.</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-function)">addLineNumbers</span><span style="color:var(--astro-code-color-text)">();</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="js"><code><span class="line"><span style="color:var(--astro-code-token-function)">addLineNumbers</span><span style="color:var(--astro-code-color-text)">();</span></span>
 <span class="line"></span></code></pre>
     </article>
     <aside>

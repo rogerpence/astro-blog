@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width">
-  <meta name="generator" content="Astro v4.5.5">
+  <meta name="generator" content="Astro v4.7.0">
   <!--  -->
   <meta name="description" content="PowerShell snippets">
   <!--  -->
@@ -14,7 +14,7 @@
   <title></title>
 
   <script src="/pagefind/pagefind-ui.js"></script>
-<link rel="stylesheet" href="/_astro/index.DyzS-YJm.css" /><script type="module" src="/_astro/hoisted.CXjF2JFW.js"></script></head>
+<link rel="stylesheet" href="/_astro/index.DFHzBmL5.css"><script type="module" src="/_astro/hoisted.B8LucRpl.js"></script></head>
   <body>
     <div class="site">
       <header class="site__header">
@@ -50,13 +50,13 @@
 </div>
       <h4 id="get-file-version">Get file version</h4>
 <p>Get the file version:</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>(get-item LutherBackup.exe).VersionInfo.FileVersion</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>(get-item LutherBackup.exe).VersionInfo.FileVersion</span></span>
 <span class="line"><span></span></span></code></pre>
 <p>List all VersionInfo attributes:</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>(get-item LutherBackup.exe).VersionInfo | format-list</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>(get-item LutherBackup.exe).VersionInfo | format-list</span></span>
 <span class="line"><span></span></span></code></pre>
 <h4 id="get-a-list-of-files">Get a list of files</h4>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>get-childitem -path *.ppt? -Recurse |</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>get-childitem -path *.ppt? -Recurse |</span></span>
 <span class="line"><span>    select fullName |</span></span>
 <span class="line"><span>    export-csv powerpoints .csv</span></span>
 <span class="line"><span></span></span></code></pre>

@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width">
-  <meta name="generator" content="Astro v4.5.5">
+  <meta name="generator" content="Astro v4.7.0">
   <!--  -->
   <meta name="description" content="Astro.glob provides two ways to collect document content. Pick one, don't mix 'n match.">
   <!--  -->
@@ -14,7 +14,7 @@
   <title></title>
 
   <script src="/pagefind/pagefind-ui.js"></script>
-<link rel="stylesheet" href="/_astro/index.DyzS-YJm.css" /><script type="module" src="/_astro/hoisted.CXjF2JFW.js"></script></head>
+<link rel="stylesheet" href="/_astro/index.DFHzBmL5.css"><script type="module" src="/_astro/hoisted.B8LucRpl.js"></script></head>
   <body>
     <div class="site">
       <header class="site__header">
@@ -56,11 +56,11 @@
 <p>Confoundingly, each represents content data differently.</p>
 <h2 id="astroglob">Astro.glob</h2>
 <p>The code below <code>Astro.glob</code> fetches the <code>posts</code> content collection. The argument passed to <code>Astro.glob</code> must a be string literal.</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>const posts = await Astro.glob(&quot;../content/posts/*.mdx&quot;);</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>const posts = await Astro.glob(&quot;../content/posts/*.mdx&quot;);</span></span>
 <span class="line"><span></span></span></code></pre>
 <p>The code above fetches <code>.mdx</code> files, but you could get both Markdown and mdx files with the <code>*.md?</code> file selector.</p>
 <p><code>Astro.glob</code> returns this object as one of the elements of the content data:</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-color-text)">{</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="js"><code><span class="line"><span style="color:var(--astro-code-color-text)">{</span></span>
 <span class="line"><span style="color:var(--astro-code-color-text)">  frontmatter</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-color-text)"> [Getter]</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
 <span class="line"><span style="color:var(--astro-code-color-text)">  getHeadings</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-color-text)"> [Getter]</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
 <span class="line"><span style="color:var(--astro-code-color-text)">  __usesAstroImage</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-color-text)"> [Getter]</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
@@ -78,11 +78,11 @@
 <h2 id="getcollection">getCollection</h2>
 <p>The code below fetches a content collection with <code>getCollection.</code> It’s a little more flexible than <code>Astro.glob</code> because
 it isn’t location-specific, it fetches the content collection requested.</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">import</span><span style="color:var(--astro-code-color-text)"> { getCollection } </span><span style="color:var(--astro-code-token-keyword)">from</span><span style="color:var(--astro-code-token-string-expression)"> &quot;astro:content&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="js"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">import</span><span style="color:var(--astro-code-color-text)"> { getCollection } </span><span style="color:var(--astro-code-token-keyword)">from</span><span style="color:var(--astro-code-token-string-expression)"> &quot;astro:content&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
 <span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-constant)"> posts</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-keyword)"> await</span><span style="color:var(--astro-code-token-function)"> getCollection</span><span style="color:var(--astro-code-color-text)">(</span><span style="color:var(--astro-code-token-string-expression)">&quot;posts&quot;</span><span style="color:var(--astro-code-color-text)">);</span></span>
 <span class="line"></span></code></pre>
 <p><code>getCollection</code> returns this as one of the elements of the content data:</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-color-text)">{</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="js"><code><span class="line"><span style="color:var(--astro-code-color-text)">{</span></span>
 <span class="line"><span style="color:var(--astro-code-color-text)">  id</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-string-expression)"> &#39;astro-notes.mdx&#39;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
 <span class="line"><span style="color:var(--astro-code-color-text)">  slug</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-string-expression)"> &#39;astro-notes&#39;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
 <span class="line"><span style="color:var(--astro-code-color-text)">  body</span><span style="color:var(--astro-code-token-punctuation)">:</span><span style="color:var(--astro-code-token-string-expression)"> &#39;[body]&#39;</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
@@ -104,7 +104,7 @@ it isn’t location-specific, it fetches the content collection requested.</p>
 Both are wrappers around Vite’s <code>glob</code> function so their performance is similar.</p>
 <p>Although <code>getCollection</code> requires an import, I use it exclusively to fetch content collections. The helper function makes it easy
 to get all the data needed from the a content collection member to list it.</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">export</span><span style="color:var(--astro-code-token-keyword)"> function</span><span style="color:var(--astro-code-token-function)"> getContentData</span><span style="color:var(--astro-code-color-text)">(obj) {</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="js"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">export</span><span style="color:var(--astro-code-token-keyword)"> function</span><span style="color:var(--astro-code-token-function)"> getContentData</span><span style="color:var(--astro-code-color-text)">(obj) {</span></span>
 <span class="line"><span style="color:var(--astro-code-token-keyword)">  return</span><span style="color:var(--astro-code-color-text)"> {</span></span>
 <span class="line"><span style="color:var(--astro-code-color-text)">    title</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> obj</span><span style="color:var(--astro-code-color-text)">.</span><span style="color:var(--astro-code-token-constant)">data</span><span style="color:var(--astro-code-color-text)">.title</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
 <span class="line"><span style="color:var(--astro-code-color-text)">    description</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> obj</span><span style="color:var(--astro-code-color-text)">.</span><span style="color:var(--astro-code-token-constant)">data</span><span style="color:var(--astro-code-color-text)">.description</span><span style="color:var(--astro-code-token-punctuation)">,</span></span>
@@ -118,7 +118,7 @@ the document is a draft otherwise it’s been published. If it
 is a draft document <code>getContentData</code> returns “N/A.”</p>
 <p>The example below shows an Astro component that emits the HTML needed to the content collection member in a list.
 It receives a single post as a post as a property and then uses <code>getContentData</code> to get the values needed to list the document.</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">---</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="js"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">---</span></span>
 <span class="line"><span style="color:var(--astro-code-token-keyword)">import</span><span style="color:var(--astro-code-color-text)"> { getContentData } </span><span style="color:var(--astro-code-token-keyword)">from</span><span style="color:var(--astro-code-token-string-expression)"> &quot;$scripts/utils.js&quot;</span><span style="color:var(--astro-code-color-text)">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-color-text)"> { </span><span style="color:var(--astro-code-token-constant)">post</span><span style="color:var(--astro-code-color-text)"> } </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-token-constant)"> Astro</span><span style="color:var(--astro-code-color-text)">.props;</span></span>

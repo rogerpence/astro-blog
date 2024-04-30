@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width">
-  <meta name="generator" content="Astro v4.5.5">
+  <meta name="generator" content="Astro v4.7.0">
   <!--  -->
   <meta name="description" content="Omitting the last comma in a series in a Jinja template">
   <!--  -->
@@ -14,7 +14,7 @@
   <title></title>
 
   <script src="/pagefind/pagefind-ui.js"></script>
-<link rel="stylesheet" href="/_astro/index.DyzS-YJm.css" /><script type="module" src="/_astro/hoisted.CXjF2JFW.js"></script></head>
+<link rel="stylesheet" href="/_astro/index.DFHzBmL5.css"><script type="module" src="/_astro/hoisted.B8LucRpl.js"></script></head>
   <body>
     <div class="site">
       <header class="site__header">
@@ -50,14 +50,14 @@
 </div>
       <p>Jinja is a great Python template engine.This article explains how to omit the last comma in a series with Jinja.</p>
 <p>The desired result is shown below—this is an argument list for an SQL stored procedure. Note that the Id column needs a zero default value and there cannot be a comma after the last column.</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>@Id int = 0,</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>@Id int = 0,</span></span>
 <span class="line"><span>@Name nvarchar(100),</span></span>
 <span class="line"><span>@PrefixWithThe bit,</span></span>
 <span class="line"><span>@Added datetime,</span></span>
 <span class="line"><span>@Updated datetime</span></span>
 <span class="line"><span></span></span></code></pre>
 <p>In the Libretto SQL Server Json schema there is a columnSqlDeclarations column meta token that produces this:</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>@Id int,</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>@Id int,</span></span>
 <span class="line"><span>@Name nvarchar(100),</span></span>
 <span class="line"><span>@PrefixWithThe bit,</span></span>
 <span class="line"><span>@Added datetime,</span></span>
@@ -65,7 +65,7 @@
 <span class="line"><span></span></span></code></pre>
 <p>That’s close, but no cigar. It doesn’t assign the zero to the Id column and the trailing comma breaks things.</p>
 <p>Assigning a zero to the Id is a special case, so (in my case) its worth a little manual work force the zero assignment (note also that the test for the id column is case insensitive—just in case):</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>{% for col in columns %}</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>{% for col in columns %}</span></span>
 <span class="line"><span>{% if col.ColumnName.lower() == &#39;id&#39; %}</span></span>
 <span class="line"><span>@{{col.ColumnName}} {{col.DDLType}} = 0</span></span>
 <span class="line"><span>{% else %}</span></span>
@@ -74,14 +74,14 @@
 <span class="line"><span>{% endfor %}</span></span>
 <span class="line"><span></span></span></code></pre>
 <p>That’s close, but the trailing comma remains.</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>Id int = 0,</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>Id int = 0,</span></span>
 <span class="line"><span>@Name nvarchar(100),</span></span>
 <span class="line"><span>@PrefixWithThe bit,</span></span>
 <span class="line"><span>@Added datetime,</span></span>
 <span class="line"><span>@Updated datetime,</span></span>
 <span class="line"><span></span></span></code></pre>
 <p>To get the desired result, the template needs omit the trailing comma on the last element in the series. This template:</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>{% for col in columns %}</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>{% for col in columns %}</span></span>
 <span class="line"><span>{% if col.ColumnName.lower() == &#39;id&#39; %}</span></span>
 <span class="line"><span>@{{col.ColumnName}} {{col.DDLType}} = 0{% if not loop.last %},{% endif %}</span></span>
 <span class="line"><span>{% else %}</span></span>
@@ -90,18 +90,18 @@
 <span class="line"><span>{% endfor %}</span></span>
 <span class="line"><span></span></span></code></pre>
 <p>produces the correct results:</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>@Id int = 0,</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>@Id int = 0,</span></span>
 <span class="line"><span>@Name nvarchar(100),</span></span>
 <span class="line"><span>@PrefixWithThe bit,</span></span>
 <span class="line"><span>@Added datetime,</span></span>
 <span class="line"><span>@Updated datetime</span></span>
 <span class="line"><span></span></span></code></pre>
 <p>The Jinja templating engine has a built-in variable that tracks a loop index. The loop.last value conditions when the template emits the comma.</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>{% if not loop.last %},{% endif %}</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>{% if not loop.last %},{% endif %}</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span></span></span></code></pre>
 <p>This article is too long!</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0"><code><span class="line"><span>{% for column in columns -%}</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>{% for column in columns -%}</span></span>
 <span class="line"><span>    {% if column.PrimaryKey == &#39;True&#39; %}</span></span>
 <span class="line"><span>        {% if not loop.first %}, {% endif %}{{column.ColumnName}} = keyValue{{loop.index}}</span></span>
 <span class="line"><span>    {% endif %}</span></span>

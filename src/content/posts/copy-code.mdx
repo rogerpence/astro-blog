@@ -1,8 +1,8 @@
 ---
 layout: $layouts/SingleBlogPost.astro
 title: Copy code in Astro to clipboard
-description: How to copy code in Astro to clipboard and, optionally, add line numbers.
-tags: ["astro", "javascript"]
+description: How to copy code in Astro to clipboard
+tags: ['astro', 'javascript']
 date_published: 2023-04-17
 date_added: 2023-04-17
 date_updated: 2023-04-17
@@ -106,13 +106,13 @@ Add these three CSS selectors to your Astro project's global CSS:
 
 Use the JavaScript to add line numbers to fenced code blocks in Astro. To assign line numbers to a fenced code block, add a `<div class="number-code below"></div> just above the markdown fence, leaving one blank line between the `div` tag and the fence (as shown below).
 
-````markdown
+```markdown
 <div class="number-code below"></div
 
-```
+
     ... code to display here
+
 ```
-````
 
 Add the Javascript `addLineNumbers` function to the Astro app's client-side JavaScript.
 

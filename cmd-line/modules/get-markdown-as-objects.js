@@ -26,7 +26,13 @@ export const getSlug = (foldername, filename) => {
 // };
 
 const getFolderObjects = (pathPrefix, folder) => {
+  const SEP = String.fromCharCode(0x0091);
   let folderMap = [];
+
+  folderMap[0] = {
+    folder,
+    docs: [],
+  };
 
   const files = utes.getFilenames(pathPrefix, folder);
 
@@ -45,10 +51,28 @@ const getFolderObjects = (pathPrefix, folder) => {
         );
       } else {
         //folderMap.push(md_obj);
+        // const meta = {
+        //   description: md_obj.frontmatter.description,
+        //   tags: md_obj.frontmatter.tags,
+        // };
 
         const result = {
           url: `${getSlug(folder, f.name)}`,
+
+          //          content: `${JSON.stringify(meta)}${SEP}${md_obj.content}`,
           content: md_obj.content,
+          meta: {
+            title: md_obj.frontmatter.title,
+            description: md_obj.frontmatter.description,
+            tags: md_obj.frontmatter.tags.join(", "),
+          },
+          sub_results: [
+            {
+              title: md_obj.frontmatter.description,
+              url: md_obj.frontmatter.tags.join(", "),
+            },
+          ],
+
           language: "en",
           //   title: md_obj.frontmatter.title,
           //   description: md_obj.frontmatter.description,
@@ -56,11 +80,10 @@ const getFolderObjects = (pathPrefix, folder) => {
           //   folder: folder,
           //   filename: f.name,
           //   tags: md_obj.frontmatter.tags,
-          //   tags_list: md_obj.frontmatter.tags.join(" "),
           //   tag1: md_obj.frontmatter.tags[0] ?? "",
         };
 
-        folderMap.push(result);
+        folderMap[0].docs.push(result);
       }
     }
   });
@@ -69,8 +92,7 @@ const getFolderObjects = (pathPrefix, folder) => {
 };
 
 function iterateContent() {
-  const result = [];
-
+  let result;
   const md_folders = ["posts"];
   const pathPrefix =
     "C:\\Users\\thumb\\Documents\\Projects\\astro-4\\blog-again\\src\\content\\";
@@ -78,7 +100,7 @@ function iterateContent() {
 
   md_folders.forEach((folder) => {
     const folderInfo = getFolderObjects(pathPrefix, folder);
-    result.push(folderInfo);
+    result = folderInfo;
   });
 
   return result;
