@@ -164,7 +164,7 @@ export const docmap = [
             },
             {
                 "url": "/posts/powershell-snippets",
-                "content": "---\n\n#### Get file version\n\nGet the file version:\n\n```\n(get-item LutherBackup.exe).VersionInfo.FileVersion\n```\n\nList all VersionInfo attributes:\n\n```\n(get-item LutherBackup.exe).VersionInfo | format-list\n```\n\n#### Get a list of files\n\n```\nget-childitem -path *.ppt? -Recurse |\n    select fullName |\n    export-csv powerpoints .csv\n```\n powershell",
+                "content": "---\n\n#### Get file version\n\nGet the file version:\n\n```\n(get-item LutherBackup.exe).VersionInfo.FileVersion\n```\n\nList all VersionInfo attributes:\n\n```\n(get-item LutherBackup.exe).VersionInfo | format-list\n```\n\n#### Get a list of files\n\n```\nget-childitem -path *.ppt? -Recurse |\n    select fullName |\n    export-csv powerpoints .csv\n```\n\n\n\n\n\n\n\n powershell",
                 "meta": {
                     "title": "PowerShell snippets",
                     "description": "A handful of useful PowerShell shippets and tips",

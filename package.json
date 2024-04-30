@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "index": "pagefind --site dist && powershell copy-item dist/pagefind -destination public/ -recurse -force",
-    "build": "astro check && astro build && pagefind --site dist && powershell copy-item dist/pagefind -destination public/ -recurse -force",
-    "build-prod": "astro check && astro build && pagefind --site dist",
+    "index": "powershell ./refresh-index.ps1",
+    "build": "astro check && astro build && powershell ./refresh-index.ps1",
+    "tester": "powershell ./tester.ps1",
     "preview": "astro preview",
     "astro": "astro",
     "postcss:build": "postcss ./css-dev/style.css ---dir ./src/styles --env production --map",
