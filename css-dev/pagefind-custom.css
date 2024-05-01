@@ -2,8 +2,7 @@
     z-index: 25000;
     display: flex;
     justify-content: center;
-    align-items: center;
-    
+    align-items: center;    
 }
 
 .pagefind-ui__result {
@@ -11,14 +10,14 @@
     border-top: 1px solid darkgray !important;
 }
 
+.pagefind-ui__result:last-of-type {
+    border-bottom: unset !important;
+}
+
 button.pagefind-ui__search-clear {
     font-size: .8rem !important;
     color: rgb(76, 73, 73) !important;
 }
-
-.pagefind-search-wrapper {
-    /* position: relative; */
-} 
 
 .pagefind-ui__result-tags {
     display: none !important;
@@ -42,11 +41,6 @@ button.pagefind-ui__search-clear {
     --search-results-max-width: 800px; 
     overflow-y: scroll !important;
 
-    /* position: absolute;
-    width: var(--search-results-max-width);    
-    top: 2.5rem;
-    left: 50%;    
-    margin-left: calc((var(--search-results-max-width) / 2) * -1);  */
     max-height: 80vh;
 
     position: fixed;

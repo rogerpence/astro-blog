@@ -1,6 +1,6 @@
 import * as pagefind from "pagefind";
 
-import { docmap } from "./data/docmap.js";
+import { docmap } from "./data/index-objects.js";
 
 // Create a Pagefind search index to work with
 const { index } = await pagefind.createIndex();

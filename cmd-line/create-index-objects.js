@@ -1,5 +1,5 @@
 // @ts-nocheck
-
+import * as env from "./env.js";
 import path from "path";
 import ansis from "ansis";
 import * as utes from "./_utilities.js";
@@ -16,7 +16,6 @@ export const getSlug = (foldername, filename) => {
 };
 
 const getFolderObjects = (pathPrefix, folder) => {
-  const SEP = String.fromCharCode(0x0091);
   let folderMap = [];
 
   folderMap[0] = {
@@ -49,13 +48,6 @@ const getFolderObjects = (pathPrefix, folder) => {
             description: md_obj.frontmatter.description,
             tags: md_obj.frontmatter.tags.join(", "),
           },
-          sub_results: [
-            {
-              title: md_obj.frontmatter.description,
-              url: md_obj.frontmatter.tags.join(", "),
-            },
-          ],
-
           language: "en",
         };
 
@@ -72,7 +64,6 @@ function iterateContent() {
   const md_folders = ["posts"];
   const pathPrefix =
     "C:\\Users\\thumb\\Documents\\Projects\\astro-4\\blog-again\\src\\content\\";
-  //"C:\\Users\\thumb\\Documents\\Projects\\astro-4\\blog-again";
 
   md_folders.forEach((folder) => {
     const folderInfo = getFolderObjects(pathPrefix, folder);
@@ -84,6 +75,12 @@ function iterateContent() {
 
 const output_path =
   "C:\\Users\\thumb\\Documents\\Projects\\astro-4\\blog-again\\cmd-line\\data";
-const result = iterateContent();
-const outfile_name = path.join(output_path, "docmap.js");
-utes.writeObjectsToFile(result, outfile_name, "docmap");
+
+const output_path2 = path.join(env.root, env.cmd_line);
+
+console.log(output_path);
+console.log(output_path2);
+
+// const result = iterateContent();
+// const outfile_name = path.join(output_path, "index-objects.js");
+// utes.writeObjectsToFile(result, outfile_name, "docmap");

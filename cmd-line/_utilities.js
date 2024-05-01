@@ -2,7 +2,6 @@
 
 import fs from "fs";
 import path from "path";
-//import getFrontMatter from 'gray-matter';
 import ansis from "ansis";
 
 export const locales = ["en", "es"];
@@ -39,11 +38,9 @@ export function truncate_path(full_filename, start_folders) {
  * @returns {string[]}
  */
 export const getFilenames = (pathPrefix, filesPath) => {
-  //  const targetDirectory = path.join(pathPrefix, filesPath);
   const targetDirectory =
     "C:\\Users\\thumb\\Documents\\Projects\\astro-4\\blog-again\\src\\content\\posts";
 
-  //console.log(pathPrefix, filesPath);
   const folderExists = fs.access(targetDirectory, (error) => {
     if (error) {
       console.log(error);

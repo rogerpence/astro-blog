@@ -101,3 +101,12 @@ result {
         }
     ]
 }
+
+This is the Coding in Public package.json command to build and index a project
+
+"index": "pagefind --site dist && powershell copy-item dist/pagefind -destination public/ -recurse -force",
+"build": "astro check && astro build && pagefind --site dist && powershell copy-item dist/pagefind -destination public/ -recurse -force",
+
+
+
+    
