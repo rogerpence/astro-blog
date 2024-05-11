@@ -10,6 +10,11 @@
     border-top: 1px solid darkgray !important;
 }
 
+
+.pagefind-ui__search-input {
+    font-size: 1.2rem !important;
+    font-weight: 400 !important;
+}
 .pagefind-ui__result:last-of-type {
     border-bottom: unset !important;
 }
@@ -78,5 +83,5 @@ button.pagefind-ui__search-clear {
 }
 
 :root {
-    --pagefind-ui-scale: .6
+    --pagefind-ui-scale: .7;
 } 

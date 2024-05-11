@@ -1,5 +1,9 @@
+export const locales = ["en"];
+
+export const folders = ["posts"];
+
 export const root =
-  "C:\\Users\\thumb\\Documents\\Projects\\astro-4\\blog-again\\";
+  "C:\\Users\\thumb\\Documents\\Projects\\astro-4\\blog-again";
 
 export const src__content =
   "C:\\Users\\thumb\\Documents\\Projects\\astro-4\\blog-again\\src\\content";

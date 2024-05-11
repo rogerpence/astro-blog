@@ -10,14 +10,14 @@ date_published:
 pinned: false
 ---
 
-### Copy all rows from one table to another
+##### Copy all rows from one table to another
 
 ```sql
 insert into stateNew ([state], [abbrev])
 select * from States
 ```
 
-### Getting identity column from last row added with a stored procedure
+##### Getting identity column from last row added with a stored procedure
 
 Stored procedure:
 
@@ -44,3 +44,41 @@ GO
 EXEC @rp = qInsert 0, 'Bobby Fuller Four'
 SELECT @rp as 'identify'
 ```
+
+
+##### Backup SQL Server with PowerShell
+
+To work with SQL Server from PowerShell, install the PowerShell SqlServer module:
+
+```
+Install-Module -Name SqlServer
+```
+
+Do this with an admin session if you want to install the module for all updateLanguageServiceSourceFile. 
+
+
+```
+get-sqldatabase -serverinstance WIN10RP-1809                | where { $_.Name -ne 'tempdb' } | backup-sqldatabase
+get-sqldatabase -serverinstance "WIN10RP-1809\MSSQLSERVER01" | where { $_.Name -ne 'tempdb' } | backup-sqldatabase
+```
+
+##### Set SQL Server instance log on account (necessary do batch back operations)
+
+- Open Windows Services applet
+- Find SQL Server (instance-name)
+- Right-click and select "properties"
+- Click the `Log On` tab
+- Select the "Local System Account" radio button
+
+##### Run a PowerShell script at Windows shutdown 
+
+```
+Launch `gpedit.msc'
+```
+
+
+osql.exe -E -Q "BACKUP DATABASE crm TO DISK='C:\users\thumb\documents\sql-server-backup\db.bak' WITH FORMAT"
+
+
+
+C:\WINDOWS\System32\GroupPolicy\Machine\Scripts\Shutdown\backup-sql-server.ps1

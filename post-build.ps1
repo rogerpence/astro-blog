@@ -10,3 +10,5 @@ node .\cmd-line\create-index-objects.js
 node .\cmd-line\create-index.js 
 
 copy-item .\public\pagefind -destination .\.vercel\output\static\pagefind -recurse -force
+
+node .\cmd-line\create-tagmap-objects.js

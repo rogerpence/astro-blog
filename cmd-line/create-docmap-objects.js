@@ -24,7 +24,6 @@ const getFolderObjects = (pathPrefix, folder, locale) => {
   };
 
   const files = utes.getFilenames(pathPrefix, folder);
-
   files.forEach((f) => {
     if (!f.name.startsWith(`_`)) {
       const fullName = path.join(f.path, f.name);
@@ -40,21 +39,16 @@ const getFolderObjects = (pathPrefix, folder, locale) => {
         );
       } else {
         const result = {
+          layout: md_obj.frontmatter.layout,
           url: `${getSlug(folder, f.name)}`,
-
-          content: `${md_obj.frontmatter.title} ${
-            md_obj.content
-          }  ${md_obj.frontmatter.tags.join(" ")}`,
-          // md_obj.frontmatter.title +
-          // " " +
-          // md_obj.content +
-          // " " +
-          // md_obj.frontmatter.tags.join(" "),
-          meta: {
-            title: md_obj.frontmatter.title,
-            description: md_obj.frontmatter.description,
-            tags: md_obj.frontmatter.tags.join(", "),
-          },
+          title: md_obj.frontmatter.title,
+          content: md_obj.content + " " + md_obj.frontmatter.tags.join(" "),
+          descript: md_obj.frontmatter.description,
+          tags: md_obj.frontmatter.tags,
+          date_added: md_obj.frontmatter.date_added,
+          date_updated: md_obj.frontmatter.date_updated,
+          date_published: md_obj.frontmatter.date_published,
+          pinned: md_obj.frontmatter.pinned,
           language: locale,
         };
 
@@ -87,5 +81,5 @@ function iterateContent() {
 const output_path = env.cmd_line__data;
 
 const result = iterateContent();
-const outfile_name = path.join(output_path, "index-objects.js");
+const outfile_name = path.join(output_path, "docmap-objects.js");
 utes.writeObjectsToFile(result, outfile_name, "docmap");

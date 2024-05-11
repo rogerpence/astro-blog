@@ -4,8 +4,37 @@ import fs from "fs";
 import path from "path";
 import ansis from "ansis";
 
-export const locales = ["en", "es"];
-export const folders = ["case-study", "kb", "newsletter", "white-paper"];
+/*
+ * Get array of tag objects from object array.
+ * @param {object[]} objarr
+ *
+ * @returns {object[]}
+ */
+export const get_tag_objects = (objarr) => {
+  let tags = [];
+
+  objarr.forEach((post) => {
+    tags = [...tags, ...post.tags];
+  });
+
+  const unique_tags = Array.from(new Set(tags));
+
+  const uniqs = [];
+  objarr.forEach((post) => {
+    post.tags.forEach((tag) => {
+      const uniqueTag = uniqs.find((uniq) => uniq.name == tag);
+      if (!uniqueTag) uniqs.push({ name: tag, count: 1 });
+      else uniqueTag.count++;
+    });
+  });
+
+  const sorted = sortObjArray(uniqs, ["name"]);
+
+  return sorted;
+};
+
+// export const locales = ["en", "es"];
+// export const folders = ["posts"];
 
 /**
  * Truncate a path starting at a given folder or folders.
@@ -37,9 +66,9 @@ export function truncate_path(full_filename, start_folders) {
  *
  * @returns {string[]}
  */
-export const getFilenames = (pathPrefix, filesPath) => {
-  const targetDirectory =
-    "C:\\Users\\thumb\\Documents\\Projects\\astro-4\\blog-again\\src\\content\\posts";
+export const getFilenames = (pathPrefix, endingFolder) => {
+  const targetDirectory = path.join(pathPrefix, endingFolder);
+  //("C:\\Users\\thumb\\Documents\\Projects\\astro-4\\blog-again\\src\\content\\posts");
 
   const folderExists = fs.access(targetDirectory, (error) => {
     if (error) {
@@ -101,7 +130,6 @@ export const sortObjArray = (arr, props) => {
         comparison = a[props[i]].localeCompare(b[props[i]]);
       }
 
-      //			const comparison = a[props[i]].localeCompare(b[props[i]]);
       if (comparison !== 0) {
         return comparison;
       }
