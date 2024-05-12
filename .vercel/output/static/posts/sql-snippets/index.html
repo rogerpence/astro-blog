@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width">
-  <meta name="generator" content="Astro v4.7.0">
+  <meta name="generator" content="Astro v4.8.2">
   <!--  -->
   <meta name="description" content="SQL snippets">
   <!--  -->
@@ -14,7 +14,7 @@
   <title></title>
 
   <script src="/pagefind/pagefind-ui.js"></script>
-<link rel="stylesheet" href="/_astro/index.zKIzwXNF.css"><script type="module" src="/_astro/hoisted.ByXv3Sle.js"></script></head>
+<link rel="stylesheet" href="/_astro/index.DgrbRY6m.css"><script type="module" src="/_astro/hoisted.ByXv3Sle.js"></script></head>
   <body>
     <div class="site">
       <header class="site__header">
@@ -48,11 +48,11 @@
       <div class="small-tags-list">
   <span>sql</span>
 </div>
-      <h3 id="copy-all-rows-from-one-table-to-another">Copy all rows from one table to another</h3>
+      <h5 id="copy-all-rows-from-one-table-to-another">Copy all rows from one table to another</h5>
 <pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="sql"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">insert into</span><span style="color:var(--astro-code-color-text)"> stateNew ([state], [abbrev])</span></span>
 <span class="line"><span style="color:var(--astro-code-token-keyword)">select</span><span style="color:var(--astro-code-token-keyword)"> *</span><span style="color:var(--astro-code-token-keyword)"> from</span><span style="color:var(--astro-code-color-text)"> States</span></span>
 <span class="line"></span></code></pre>
-<h3 id="getting-identity-column-from-last-row-added-with-a-stored-procedure">Getting identity column from last row added with a stored procedure</h3>
+<h5 id="getting-identity-column-from-last-row-added-with-a-stored-procedure">Getting identity column from last row added with a stored procedure</h5>
 <p>Stored procedure:</p>
 <pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="sql"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">CREATE</span><span style="color:var(--astro-code-token-keyword)"> PROCEDURE</span><span style="color:var(--astro-code-color-text)"> [dbo].[qInsert]</span></span>
 <span class="line"><span style="color:var(--astro-code-color-text)">    @Id </span><span style="color:var(--astro-code-token-keyword)">int</span><span style="color:var(--astro-code-color-text)">,</span></span>
@@ -74,6 +74,27 @@
 <pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="sql"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">EXEC</span><span style="color:var(--astro-code-color-text)"> @rp </span><span style="color:var(--astro-code-token-keyword)">=</span><span style="color:var(--astro-code-color-text)"> qInsert </span><span style="color:var(--astro-code-token-constant)">0</span><span style="color:var(--astro-code-color-text)">, </span><span style="color:var(--astro-code-token-string-expression)">&#39;Bobby Fuller Four&#39;</span></span>
 <span class="line"><span style="color:var(--astro-code-token-keyword)">SELECT</span><span style="color:var(--astro-code-color-text)"> @rp </span><span style="color:var(--astro-code-token-keyword)">as</span><span style="color:var(--astro-code-token-string-expression)"> &#39;identify&#39;</span></span>
 <span class="line"></span></code></pre>
+<h5 id="backup-sql-server-with-powershell">Backup SQL Server with PowerShell</h5>
+<p>To work with SQL Server from PowerShell, install the PowerShell SqlServer module:</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>Install-Module -Name SqlServer</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Do this with an admin session if you want to install the module for all updateLanguageServiceSourceFile.</p>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>get-sqldatabase -serverinstance WIN10RP-1809                | where { $_.Name -ne &#39;tempdb&#39; } | backup-sqldatabase</span></span>
+<span class="line"><span>get-sqldatabase -serverinstance &quot;WIN10RP-1809\MSSQLSERVER01&quot; | where { $_.Name -ne &#39;tempdb&#39; } | backup-sqldatabase</span></span>
+<span class="line"><span></span></span></code></pre>
+<h5 id="set-sql-server-instance-log-on-account-necessary-do-batch-back-operations">Set SQL Server instance log on account (necessary do batch back operations)</h5>
+<ul>
+<li>Open Windows Services applet</li>
+<li>Find SQL Server (instance-name)</li>
+<li>Right-click and select “properties”</li>
+<li>Click the <code>Log On</code> tab</li>
+<li>Select the “Local System Account” radio button</li>
+</ul>
+<h5 id="run-a-powershell-script-at-windows-shutdown">Run a PowerShell script at Windows shutdown</h5>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>Launch `gpedit.msc&#39;</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>osql.exe -E -Q “BACKUP DATABASE crm TO DISK=‘C:\users\thumb\documents\sql-server-backup\db.bak’ WITH FORMAT”</p>
+<p>C:\WINDOWS\System32\GroupPolicy\Machine\Scripts\Shutdown\backup-sql-server.ps1</p>
     </article>
     <aside>
       <div>
@@ -91,12 +112,7 @@
       </a><a href="/tag/css">
         <span>
           css
-          <span class="tag-count-circle">3</span>
-        </span>
-      </a><a href="/tag/html">
-        <span>
-          html
-          <span class="tag-count-circle">1</span>
+          <span class="tag-count-circle">2</span>
         </span>
       </a><a href="/tag/javascript">
         <span>

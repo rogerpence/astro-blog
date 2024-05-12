@@ -6,15 +6,15 @@
   <meta charset="utf-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width">
-  <meta name="generator" content="Astro v4.7.0">
+  <meta name="generator" content="Astro v4.8.2">
   <!--  -->
-  <meta name="description" content="Display the title attribute of an anchor tag when the anchor is hovered.">
+  <meta name="description" content="This CSS displays a small title above an element when it is hovered over. This originally intended for better anchor tag titles that are often under the mouse pointer--but it also works for other things.">
   <!--  -->
 
   <title></title>
 
   <script src="/pagefind/pagefind-ui.js"></script>
-<link rel="stylesheet" href="/_astro/index.zKIzwXNF.css"><script type="module" src="/_astro/hoisted.ByXv3Sle.js"></script></head>
+<link rel="stylesheet" href="/_astro/index.DgrbRY6m.css"><script type="module" src="/_astro/hoisted.ByXv3Sle.js"></script></head>
   <body>
     <div class="site">
       <header class="site__header">
@@ -44,13 +44,15 @@
   <div class="content">
   <div class="use-sidebar">
     <article class="column-main">
-      <h1>A better anchor title</h1>
+      <h1>A simple CSS-only text popover</h1>
       <div class="small-tags-list">
-  <span>html</span><span>css</span>
+  <span>css</span><span>html</span>
 </div>
       <p>This is some text</p>
 <p>asdfasdfasdf</p>
-<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="css"><code><span class="line"><span style="color:var(--astro-code-token-string-expression)">a</span><span style="color:var(--astro-code-color-text)"> {</span></span>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="plaintext"><code><span class="line"><span>&lt;a data-title=&quot;hello, world&quot; href=&quot;...&quot;&gt;...&lt;/a&gt;</span></span>
+<span class="line"><span></span></span></code></pre>
+<pre class="astro-code css-variables" style="background-color:var(--astro-code-color-background);color:var(--astro-code-color-text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word" tabindex="0" data-language="css"><code><span class="line"><span style="color:var(--astro-code-token-string-expression)">a</span><span style="color:var(--astro-code-color-text)">[</span><span style="color:var(--astro-code-token-function)">data-title</span><span style="color:var(--astro-code-color-text)">] {</span></span>
 <span class="line"><span style="color:var(--astro-code-token-constant)">  position</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> relative</span><span style="color:var(--astro-code-color-text)">;</span></span>
 <span class="line"><span style="color:var(--astro-code-token-constant)">  display</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> inline-block</span><span style="color:var(--astro-code-color-text)">;</span></span>
 <span class="line"><span style="color:var(--astro-code-token-constant)">  margin-top</span><span style="color:var(--astro-code-token-keyword)">:</span><span style="color:var(--astro-code-token-constant)"> 1</span><span style="color:var(--astro-code-token-keyword)">rem</span><span style="color:var(--astro-code-color-text)">;</span></span>
@@ -85,12 +87,7 @@
       </a><a href="/tag/css">
         <span>
           css
-          <span class="tag-count-circle">3</span>
-        </span>
-      </a><a href="/tag/html">
-        <span>
-          html
-          <span class="tag-count-circle">1</span>
+          <span class="tag-count-circle">2</span>
         </span>
       </a><a href="/tag/javascript">
         <span>

@@ -114,11 +114,11 @@ export const docmap = [
             },
             {
                 "url": "/posts/pagefind-wrangling",
-                "content": "Wranging PageFind with Astro to get the most out of it ---\n\nThis is PageFind's default search results listing:\n\n![default](https://nyc3.digitaloceanspaces.com/rp-assets/images/pagefind-default-results.png)\n\n\nThis is the result of the customization provided in this post:\n\n![custom](https://nyc3.digitaloceanspaces.com/rp-assets/images/pagefind-custom-results.png)\n\n\n## Rebuild PageFind search index\n\n  pagefind astro",
+                "content": "Wranging PageFind with Astro to get the most out of it ---\n\nThis is PageFind's default search results listing:\n\n![default](https://nyc3.digitaloceanspaces.com/rp-assets/images/pagefind-default-results.png)\n\n\nThis is the result of the customization provided in this post:\n\n![custom](https://nyc3.digitaloceanspaces.com/rp-assets/images/pagefind-custom-results.png)\n\n## Rebuild PageFind search index\n\n  astro pagefind",
                 "meta": {
                     "title": "Wranging PageFind with Astro to get the most out of it",
-                    "description": "This post provides code and tips for improving PageFind's UI/UX",
-                    "tags": "pagefind, astro"
+                    "description": "PageFind is a great search engine static-content sites. This article shows how to tailor its index to your exact needs and how to customize its user interface.",
+                    "tags": "astro, pagefind"
                 },
                 "language": "en"
             },

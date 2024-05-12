@@ -1,13 +1,11 @@
 ---
-layout: ../../layouts/SingleBlogPost.astro
-title: A better anchor title
-description: Display the title attribute of an anchor tag when the anchor is hovered.
-tags:
-  - html
-  - css
-date_published: 2023-05-10
+layout: $layouts/SingleBlogPost.astro
+title: A simple CSS-only text popover 
+description: This CSS displays a small title above an element when it is hovered over. This originally intended for better anchor tag titles that are often under the mouse pointer--but it also works for other things.
+tags: ['css', 'html']
 date_added: 2023-05-10
-date_updated: 2023-05-14
+date_updated: 2023-05-10
+date_published: 
 pinned: false
 ---
 
@@ -15,8 +13,13 @@ This is some text
 
 asdfasdfasdf
 
+
+```
+<a data-title="hello, world" href="...">...</a>
+```
+
 ```css
-a {
+a[data-title] {
   position: relative;
   display: inline-block;
   margin-top: 1rem;
