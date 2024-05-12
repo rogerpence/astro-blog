@@ -1,0 +1,40 @@
+---
+layout: $layouts/SingleBlogPost.astro
+title: PowerShell snippets
+description: A handful of useful PowerShell shippets and tips
+tags:
+  - powershell
+date_added: 2024-04-17T11:29:16
+date_updated: 2024-04-17T11:30:40
+date_published:
+pinned: false
+---
+
+#### Get file version
+
+Get the file version:
+
+```
+(get-item LutherBackup.exe).VersionInfo.FileVersion
+```
+
+List all VersionInfo attributes:
+
+```
+(get-item LutherBackup.exe).VersionInfo | format-list
+```
+
+#### Get a list of files
+
+```
+get-childitem -path *.ppt? -Recurse |
+    select fullName |
+    export-csv powerpoints .csv
+```
+
+
+
+
+
+
+

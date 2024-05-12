@@ -17,7 +17,7 @@
 		},
 		{
 			"src": "^\\/tag(?:\\/(.*?))?\\/?$",
-			"dest": "_render"
+			"dest": "/_isr?x_astro_path=$0"
 		}
 	]
 }

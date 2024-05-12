@@ -1,0 +1,28 @@
+---
+layout: $layouts/SingleBlogPost.astro
+title: CSS relative colors
+description: Using OKLCH to create relative colors
+tags: ['css']
+date_published: 2023-04-09
+date_added: 2023-04-09
+date_updated: 2023-04-09
+pinned: false
+---
+
+[Adam Argyle article](https://developer.chrome.com/blog/css-relative-color-syntax)
+
+Lighten a color by 25%
+
+```css
+.lighten-by-25 {
+  background: oklch(from blue calc(l * 1.25) c h);
+}
+```
+
+Darken a color by 25%
+
+```css
+.darken-by-25 {
+  background: oklch(from blue calc(l * 0.75) c h);
+}
+```

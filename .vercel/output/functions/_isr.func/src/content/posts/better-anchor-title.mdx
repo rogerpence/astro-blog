@@ -1,0 +1,42 @@
+---
+layout: $layouts/SingleBlogPost.astro
+title: A simple CSS-only text popover 
+description: This CSS displays a small title above an element when it is hovered over. This originally intended for better anchor tag titles that are often under the mouse pointer--but it also works for other things.
+tags: ['css', 'html']
+date_added: 2023-05-10
+date_updated: 2023-05-10
+date_published: 
+pinned: false
+---
+
+This is some text
+
+asdfasdfasdf
+
+
+```
+<a data-title="hello, world" href="...">...</a>
+```
+
+```css
+a[data-title] {
+  position: relative;
+  display: inline-block;
+  margin-top: 1rem;
+}
+```
+
+Other words here
+
+```css
+a[data-title]:hover::after {
+  content: attr(data-title);
+  position: absolute;
+  background-color: black;
+  color: white;
+  top: -1.7rem;
+  left: -2rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 5px;
+}
+```
