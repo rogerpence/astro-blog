@@ -17,7 +17,7 @@ export const getStaticPaths = async () => {
       return post.data.tags.includes(tag.tag.trim());
     });
 
-    console.log(JSON.stringify(acc, null, 4));
+    //console.log(JSON.stringify(acc, null, 4));
     acc.push({
       params: {
         tag: tag.tag,
