@@ -1,4 +1,5 @@
 // Outputs: /builtwith.json
+export const prerender = false;
 
 import { tags_list } from "../../../cmd-line/data/tag-objects.js";
 
