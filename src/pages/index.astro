@@ -27,6 +27,10 @@ const post = {
 
 <ContentLayout title="rogerpence.com | Blog" {post}>
   <div>
+    <a href="/api/tags.json">show tags</a>
+  </div>
+
+  <div>
     {filteredPosts.map((post) => <PostListing {post} />)}
   </div>
 </ContentLayout>
